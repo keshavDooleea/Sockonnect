@@ -20,5 +20,44 @@
   color: #cfd1d5;
   background-color: #23252a;
   overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 85%;
+      grid-template-columns: 15% 85%;
+  -ms-grid-rows: 45% 10% 45%;
+      grid-template-rows: 45% 10% 45%;
+      grid-template-areas: "login     auth" ".         auth" "register  auth";
+}
+
+.auth_body .login_h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: login;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  text-align: center;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.auth_body .reg_h1 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: register;
+  text-align: center;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.auth_body > div {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
+  grid-area: auth;
+  background-color: #27c1a7;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  -webkit-box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.6);
+          box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.6);
 }
 /*# sourceMappingURL=App.css.map */

@@ -1,8 +1,16 @@
+//  FONTS ***********************************************
 @font-face {
     font-family: blogger;
     src: url("./assets/blogger_sans.otf");
 }
 
+//  VARIABLES *******************************************
+$bkgColor: #23252a; 
+$textColor: #cfd1d5;
+$redish: #b76e79;
+$greenish: #27c1a7;
+
+//  STYLES **********************************************
 * {
     padding: 0;
     margin: 0;
@@ -14,7 +22,37 @@
 .auth_body {
     width: 100vw;
     height: 100vh;
-    color: #cfd1d5;
-    background-color: #23252a;
+    color: $textColor;
+    background-color: $bkgColor;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 45% 10% 45%;
+    grid-template-areas: 
+        "login     auth"
+        ".         auth"
+        "register  auth";
+
+    .login_h1 {
+        grid-area: login;
+        align-self: flex-end;
+        text-align: center;
+        cursor: pointer;
+        font-size: 28px;
+    }
+
+    .reg_h1 {
+        grid-area: register;
+        text-align: center;
+        cursor: pointer;
+        font-size: 28px;
+    }
+
+    & > div {
+        grid-area: auth;
+        background-color: $greenish;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.6);
+    }
 }
