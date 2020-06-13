@@ -16,7 +16,6 @@ class Login extends Component {
                 </div>
                 <div className="auth_big_div">
                     <div className="auth_div">
-                        <div className="RD_auth_round">R D</div>
                         <div className="sockonnect">
                             <h1>Sockonnect</h1>
                             <p>A Messaging App</p>
@@ -29,6 +28,11 @@ class Login extends Component {
                             <h1>N</h1>
                         </div>
                         <form></form>
+                        <div className="RD_auth_round">
+                            <div>
+                                <h2>R D</h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
