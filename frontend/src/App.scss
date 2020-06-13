@@ -53,11 +53,11 @@ $greenish: #27c1a7;
             width: 100%;
             top: 0;
             left: 0;
+            opacity: 0;
             color: $textColor;
             pointer-events: none;
             transition: 0.3s;
             transform: translateY(40px);
-            opacity: 0;
         }
 
         h1:hover::after {
@@ -72,11 +72,61 @@ $greenish: #27c1a7;
         cursor: pointer;
     }
 
-    .auth_div {
+    .auth_big_div {
         grid-area: auth;
         background-color: $greenish;
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
         box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .auth_div {
+            width: 95%;
+            height: 95%;
+            margin-right: 10px;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr;
+            grid-template-rows: 0.5fr 3fr 1fr;
+            grid-template-areas: 
+                "path  .     sock   sock"
+                "path  form  form   ."
+                "path  form  form   RD";
+            
+            .auth_path {
+                grid-area: path;
+                display: grid;
+                place-content: center;
+
+                h1 {
+                    text-align: center;
+                    font-size: 60px;
+                    opacity: 0.4;
+                }
+            }
+
+            form {
+                grid-area: form;
+            }
+
+            .sockonnect {
+                grid-area: sock;
+                text-align: justify;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: 2px;
+
+                h1 {
+                    text-align: justify;
+                }
+            }
+
+            .RD_auth_round {
+                grid-area: RD;
+            }
+        }
     }
 }
