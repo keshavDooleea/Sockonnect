@@ -133,10 +133,11 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: form;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  width: 80%;
+  height: 90%;
+  -ms-grid-column-align: center;
+      justify-self: center;
   border-radius: 36px;
-  margin: 40px 50px;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }

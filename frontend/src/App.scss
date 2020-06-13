@@ -118,9 +118,10 @@ $greenish: #27c1a7;
 
             form {
                 grid-area: form;
-                box-sizing: border-box;
+                width: 80%;
+                height: 90%;
+                justify-self: center;
                 border-radius: 36px;
-                margin: 40px 50px;
                 box-shadow:  6px 6px 13px #21a48e, 
                             -6px -6px 13px #2ddec0;
             }
