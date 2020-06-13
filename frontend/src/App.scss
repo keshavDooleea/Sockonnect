@@ -7,6 +7,7 @@
 //  VARIABLES *******************************************
 $bkgColor: #23252a; 
 $textColor: #cfd1d5;
+$darkgrey: #45474c;
 $redish: #b76e79;
 $greenish: #27c1a7;
 
@@ -46,6 +47,28 @@ $greenish: #27c1a7;
         text-align: center;
         cursor: pointer;
         font-size: 28px;
+        position: relative;
+        color: $darkgrey;
+
+        &::after {
+            content: "Register";
+            position: absolute;
+            width: 100%;
+            height: 10%;
+            top: 0;
+            left: 0;
+            color: $textColor;
+            pointer-events: none;
+            transition: 0.3s;
+            transform: translateY(40px);
+            opacity: 0;
+        }
+
+        &:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     }
 
     & > div {
