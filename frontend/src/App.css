@@ -135,11 +135,114 @@
   grid-area: form;
   width: 80%;
   height: 90%;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
   border-radius: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form > div {
+  width: 80%;
+  height: 55px;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form > div label {
+  width: 25%;
+  text-align: center;
+}
+
+.auth_body .auth_big_div .auth_div form > div input {
+  height: 100%;
+  width: 55%;
+  border: none;
+  font-size: 22px;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.auth_body .auth_big_div .auth_div form > div span {
+  width: 20%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.auth_body .auth_big_div .auth_div form > div span img {
+  width: 45%;
+  height: 70%;
+  cursor: pointer;
+  opacity: 0.3;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.auth_body .auth_big_div .auth_div form > div span img:hover {
+  opacity: 1;
+}
+
+.auth_body .auth_big_div .auth_div form > div .login_username_input {
+  width: 75%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in h1 {
+  width: 120px;
+  height: 50px;
+  background-color: white;
+  color: #27c1a7;
+  font-size: 21px;
+  border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in h1:active {
+  -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+          box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
 }
 
 .auth_body .auth_big_div .auth_div .sockonnect {

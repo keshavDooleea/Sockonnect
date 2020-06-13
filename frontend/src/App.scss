@@ -12,11 +12,21 @@ $redish: #b76e79;
 $greenish: #27c1a7;
 
 //  FUNCTIONS *******************************************
-@mixin greenBoxShadow {
+@mixin rdBoxShadow {
     box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.08),
                 inset 0 -15px 15px rgba(255, 255, 255, 0.08),
                 0 15px 15px rgba(0, 0, 0, 0.08),
                 inset 0 15px 15px rgba(0, 0, 0, 0.08);
+}
+
+@mixin greenBoxShadow {
+    box-shadow:  6px 6px 13px #21a48e, 
+                 -6px -6px 13px #2ddec0;
+}
+
+@mixin activeButtonsShadow {
+    box-shadow: inset 6px 6px 13px #21a48e, 
+                inset -6px -6px 13px #2ddec0;
 }
 
 //  STYLES **********************************************
@@ -122,8 +132,85 @@ $greenish: #27c1a7;
                 height: 90%;
                 justify-self: center;
                 border-radius: 36px;
-                box-shadow:  6px 6px 13px #21a48e, 
-                            -6px -6px 13px #2ddec0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                @include greenBoxShadow();
+
+                & > div {
+                    width: 80%;
+                    height: 55px;
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    @include greenBoxShadow();
+
+                    label {
+                        width: 25%;
+                        text-align: center;
+                    }
+
+                    input {
+                        height: 100%;
+                        width: 55%;
+                        border: none;
+                        font-size: 22px;
+                        padding: 0 5px;
+                        box-sizing: border-box;
+                    }     
+
+                    span {
+                        width: 20%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+
+                        img {
+                            width: 45%;
+                            height: 70%;
+                            cursor: pointer;
+                            opacity: 0.3;
+                            transition: 0.2s;
+
+                            &:hover {
+                                opacity: 1;
+                            }                           
+                        }
+
+                        
+                    }
+                    
+                    .login_username_input {
+                        width: 75%;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                    }
+                }
+
+                .sign_in {
+                    box-shadow: none;
+
+                    h1 {
+                        width: 120px;
+                        height: 50px;
+                        background-color: white;
+                        color: $greenish;
+                        font-size: 21px;
+                        border-radius: 15px;
+                        display: grid;
+                        place-content: center;
+                        @include greenBoxShadow();
+                        
+                        &:active {
+                            @include activeButtonsShadow();
+                        }
+                    }
+                }
             }
 
             .sockonnect {
@@ -154,7 +241,7 @@ $greenish: #27c1a7;
                     place-content: center;
                     border: 4px solid $greenish;
                     border-radius: 50%;
-                    @include greenBoxShadow();
+                    @include rdBoxShadow();
 
                     h2 {
                         animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
