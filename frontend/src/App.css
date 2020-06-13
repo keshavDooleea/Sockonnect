@@ -36,8 +36,7 @@
   -ms-flex-item-align: end;
       align-self: flex-end;
   text-align: center;
-  cursor: pointer;
-  font-size: 28px;
+  color: #27c1a7;
 }
 
 .auth_body .reg_h1 {
@@ -45,17 +44,14 @@
   -ms-grid-column: 1;
   grid-area: register;
   text-align: center;
-  cursor: pointer;
-  font-size: 28px;
-  position: relative;
   color: #45474c;
+  position: relative;
 }
 
-.auth_body .reg_h1::after {
+.auth_body .reg_h1 h1::after {
   content: "Register";
   position: absolute;
   width: 100%;
-  height: 10%;
   top: 0;
   left: 0;
   color: #cfd1d5;
@@ -67,13 +63,19 @@
   opacity: 0;
 }
 
-.auth_body .reg_h1:hover::after {
+.auth_body .reg_h1 h1:hover::after {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
 
-.auth_body > div {
+.auth_body h1 {
+  display: inline-block;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.auth_body .auth_div {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 2;

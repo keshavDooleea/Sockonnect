@@ -5,9 +5,13 @@ class Login extends Component {
     render() {
         return (
             <div className="auth_body">
-                <h1 className="login_h1">Login</h1>
-                <h1 className="reg_h1">Register</h1>
-                <div></div>
+                <div className="login_h1">
+                    <h1>Login</h1>
+                </div>
+                <div className="reg_h1">
+                    <h1>Register</h1>
+                </div>
+                <div className="auth_div"></div>
             </div>
         );
     }

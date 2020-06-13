@@ -38,23 +38,19 @@ $greenish: #27c1a7;
         grid-area: login;
         align-self: flex-end;
         text-align: center;
-        cursor: pointer;
-        font-size: 28px;
+        color: $greenish;
     }
 
     .reg_h1 {
         grid-area: register;
         text-align: center;
-        cursor: pointer;
-        font-size: 28px;
-        position: relative;
         color: $darkgrey;
-
-        &::after {
+        position: relative;
+        
+        h1::after {
             content: "Register";
             position: absolute;
             width: 100%;
-            height: 10%;
             top: 0;
             left: 0;
             color: $textColor;
@@ -64,14 +60,19 @@ $greenish: #27c1a7;
             opacity: 0;
         }
 
-        &:hover::after {
+        h1:hover::after {
             opacity: 1;
             transform: translateY(0);
         }
-
     }
 
-    & > div {
+    h1 {
+        display: inline-block;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .auth_div {
         grid-area: auth;
         background-color: $greenish;
         border-top-left-radius: 50px;
