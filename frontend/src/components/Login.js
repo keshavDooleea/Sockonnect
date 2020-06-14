@@ -79,12 +79,16 @@ class Login extends Component {
                             <div className="sign_in">
                                 <h1>Sign In</h1>
                             </div>
+                            <div className="login_msg">
+                                <div></div>
+                                <p></p>
+                            </div>
                         </form>
-                        <div className="RD_auth_round">
+                        <span className="RD_auth_round">
                             <div>
                                 <h2>R D</h2>
                             </div>
-                        </div>
+                        </span>
                     </div>
                 </div>
             </div>

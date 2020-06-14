@@ -181,8 +181,6 @@ $greenish: #27c1a7;
                                 opacity: 1;
                             }                           
                         }
-
-                        
                     }
                     
                     .login_username_input {
@@ -209,6 +207,26 @@ $greenish: #27c1a7;
                         &:active {
                             @include activeButtonsShadow();
                         }
+                    }
+                }
+
+                .login_msg {
+                    width: 50%;
+                    height: 50px;
+                    opacity: 0.4;
+
+                    div {
+                        width: 30%;
+                        height: 100%;
+                        border-top-left-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        box-shadow: none;
+                    }
+
+                    p {
+                        width: 70%;
+                        padding: 0 5px;
+                        text-align: center;
                     }
                 }
             }
