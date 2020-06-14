@@ -232,6 +232,7 @@
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc {
   -webkit-box-shadow: none;
           box-shadow: none;
+  position: relative;
 }
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1 {
@@ -251,6 +252,12 @@
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc img {
+  position: absolute;
+  width: 25%;
+  display: none;
 }
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg {

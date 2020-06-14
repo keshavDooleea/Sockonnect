@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import showPassword from "../../assets/show_pass.png";
 import hidePassword from "../../assets/hide_pass.png";
+import loading from "../../assets/loading.gif";
 import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
@@ -79,6 +80,7 @@ class Login extends Component {
                             </div>
                             <div className="sign_in">
                                 <h1>Sign In</h1>
+                                <img src={loading} alt="loading" />
                             </div>
                             <div className="login_msg">
                                 <div></div>
@@ -97,4 +99,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

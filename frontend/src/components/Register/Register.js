@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import showPassword from "../../assets/show_pass.png";
 import hidePassword from "../../assets/hide_pass.png";
+import loading from "../../assets/loading.gif";
 import "./Register.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
@@ -82,6 +83,7 @@ class Register extends Component {
                             </div>
                             <div className="reg_acc">
                                 <h1>Register Account</h1>
+                                <img src={loading} alt="loading" />
                             </div>
                             <div className="reg_msg">
                                 <div></div>
@@ -100,4 +102,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default withRouter(Register);

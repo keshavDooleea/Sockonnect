@@ -231,6 +231,7 @@
 .auth_body .auth_big_div .auth_div form .sign_in {
   -webkit-box-shadow: none;
           box-shadow: none;
+  position: relative;
 }
 
 .auth_body .auth_big_div .auth_div form .sign_in h1 {
@@ -250,6 +251,12 @@
 .auth_body .auth_big_div .auth_div form .sign_in h1:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in img {
+  position: absolute;
+  width: 25%;
+  display: none;
 }
 
 .auth_body .auth_big_div .auth_div form .login_msg {

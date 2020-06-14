@@ -200,6 +200,7 @@ $greenish: #27c1a7;
 
                 .reg_acc {
                     box-shadow: none;
+                    position: relative;
 
                     h1 {
                         width: 180px;
@@ -215,6 +216,12 @@ $greenish: #27c1a7;
                         &:active {
                             @include activeButtonsShadow();
                         }
+                    }
+
+                    img {
+                        position: absolute;
+                        width: 25%;
+                        display: none;
                     }
                 }
 

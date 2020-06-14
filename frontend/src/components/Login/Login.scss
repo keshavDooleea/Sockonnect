@@ -199,6 +199,7 @@ $greenish: #27c1a7;
 
                 .sign_in {
                     box-shadow: none;
+                    position: relative;
 
                     h1 {
                         width: 120px;
@@ -214,6 +215,12 @@ $greenish: #27c1a7;
                         &:active {
                             @include activeButtonsShadow();
                         }
+                    }
+
+                    img {
+                        position: absolute;
+                        width: 25%;
+                        display: none;
                     }
                 }
 
