@@ -215,10 +215,16 @@ $greenish: #27c1a7;
                         display: grid;
                         place-content: center;
                         cursor: pointer;
+                        transition: 0.3s;
                         @include greenBoxShadow();
                         
                         &:active {
                             @include activeButtonsShadow();
+                        }
+
+                        &:hover {
+                            background-color: $greenish;
+                            color: white;
                         }
                     }
 

@@ -248,6 +248,8 @@
   display: grid;
   cursor: pointer;
   place-content: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
@@ -255,6 +257,11 @@
 .auth_body .auth_big_div .auth_div form .sign_in button:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in button:hover {
+  background-color: #27c1a7;
+  color: white;
 }
 
 .auth_body .auth_big_div .auth_div form .sign_in img {

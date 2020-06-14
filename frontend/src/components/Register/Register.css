@@ -249,6 +249,8 @@
   display: grid;
   place-content: center;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
@@ -256,6 +258,11 @@
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc button:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc button:hover {
+  background-color: #27c1a7;
+  color: white;
 }
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc img {

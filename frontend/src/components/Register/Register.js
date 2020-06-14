@@ -37,6 +37,7 @@ function alertUser(text, isSuccess) {
         symbolDiv.style.opacity = "0";
         msg.style.opacity = "0";
         img.style.opacity = "0";
+        div.style.opacity = "0.4";
     }, 2500);
 }
 
