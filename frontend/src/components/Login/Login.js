@@ -6,6 +6,7 @@ import loading from "../../assets/loading.gif";
 import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
+// https://www.pinterest.ca/pin/590534569872873352/visual-search/?x=16&y=12&w=530&h=397
 // 1280 x 610 
 
 class Login extends Component {

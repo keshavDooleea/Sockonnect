@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/register", (req, res) => {
-    console.log(req);
+    console.log(req.body);
 })
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

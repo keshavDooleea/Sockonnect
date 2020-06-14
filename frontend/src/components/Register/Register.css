@@ -223,7 +223,8 @@
   opacity: 1;
 }
 
-.reg_auth_body .reg_auth_big_div .reg_auth_div form > div .register_username_input {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div .register_username_input,
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div .register_fullname_input {
   width: 75%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;

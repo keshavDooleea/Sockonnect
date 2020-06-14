@@ -191,7 +191,8 @@ $greenish: #27c1a7;
                         }
                     }
                     
-                    .register_username_input {
+                    .register_username_input,
+                    .register_fullname_input {
                         width: 75%;
                         border-top-right-radius: 15px;
                         border-bottom-right-radius: 15px;

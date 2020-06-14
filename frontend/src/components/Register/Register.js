@@ -57,6 +57,7 @@ class Register extends Component {
         e.preventDefault();
         const username = document.getElementsByName("register_username")[0].value;
         const password = document.getElementsByName("register_password")[0].value;
+        const fullname = document.getElementsByName("register_fullname")[0].value;
 
         if (username.length < 6) {
             alertUser("Username must be longer than 5 letters", false);
@@ -64,10 +65,14 @@ class Register extends Component {
         } else if (password.length < 6) {
             alertUser("Password must be longer than 5 letters", false);
             return;
+        } else if (fullname.length < 6) {
+            alertUser("Enter a valid name", false);
+            return;
         }
 
         const user = {
             username,
+            fullname,
             password
         };
 
@@ -89,7 +94,7 @@ class Register extends Component {
         // shadow
         const span = document.querySelector("form div span");
         const img = document.querySelector("form div span img");
-        const input = document.getElementsByName("password")[0];
+        const input = document.getElementsByName("register_password")[0];
         span.style.boxShadow = "inset 6px 6px 13px #21a48e, inset -6px -6px 13px #2ddec0";
 
         // toggle eye
@@ -139,6 +144,10 @@ class Register extends Component {
                             <div>
                                 <label htmlFor="register_username">Username</label>
                                 <input type="text" name="register_username" className="register_username_input" spellCheck="false" autoComplete="off" />
+                            </div>
+                            <div>
+                                <label htmlFor="register_fullname">Full Name</label>
+                                <input type="text" name="register_fullname" className="register_fullname_input" spellCheck="false" autoComplete="off" />
                             </div>
                             <div>
                                 <label htmlFor="register_password">Password</label>
