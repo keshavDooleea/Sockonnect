@@ -5,7 +5,7 @@ router.route("/").post((req, res) => {
 
     console.log(req.body);
 
-    User.findOne({ username: req.body.username }, async (err, user) => {
+    User.find({ username: req.body.username }, async (err, user) => {
         console.log("DED");
         if (err) res.json("error");
 

@@ -11,7 +11,7 @@ app.use(express.json());
 // kill node.exe pid : cmd "/C TASKKILL /IM node.exe /F"
 
 // mongo
-mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }, () => {
     console.log("connected to DB!");
 });
 

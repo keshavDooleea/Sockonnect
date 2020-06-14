@@ -32,5 +32,5 @@ const UserSchema = new mongo.Schema({
     ],
 });
 
-let User = mongo.model("User", UserSchema);
+var User = mongo.model("User", UserSchema);
 module.exports = { User: User };
