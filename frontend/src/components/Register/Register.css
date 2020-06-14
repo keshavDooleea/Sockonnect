@@ -235,9 +235,12 @@
   position: relative;
 }
 
-.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1 {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc button {
   width: 180px;
   height: 50px;
+  border: none;
+  outline: none;
+  font-weight: bold;
   background-color: white;
   color: #27c1a7;
   font-size: 21px;
@@ -245,11 +248,12 @@
   display: -ms-grid;
   display: grid;
   place-content: center;
+  cursor: pointer;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 
-.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1:active {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc button:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
 }
@@ -262,7 +266,7 @@
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg {
   width: 50%;
-  height: 50px;
+  height: 55px;
   opacity: 0.4;
 }
 
@@ -273,12 +277,28 @@
   border-bottom-left-radius: 15px;
   -webkit-box-shadow: none;
           box-shadow: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg div img {
+  width: 35%;
+  height: 60%;
+  opacity: 0;
 }
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg p {
   width: 70%;
   padding: 0 5px;
   text-align: center;
+  font-weight: bold;
 }
 
 .reg_auth_body .reg_auth_big_div .reg_auth_div .reg_sockonnect {

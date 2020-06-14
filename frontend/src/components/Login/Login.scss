@@ -201,14 +201,18 @@ $greenish: #27c1a7;
                     box-shadow: none;
                     position: relative;
 
-                    h1 {
+                    button {
                         width: 120px;
                         height: 50px;
+                        border: none;
+                        outline: none;
+                        font-weight: bold;
                         background-color: white;
                         color: $greenish;
                         font-size: 21px;
                         border-radius: 15px;
                         display: grid;
+                        cursor: pointer;
                         place-content: center;
                         @include greenBoxShadow();
                         

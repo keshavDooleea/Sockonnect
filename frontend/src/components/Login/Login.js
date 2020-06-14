@@ -79,7 +79,7 @@ class Login extends Component {
                                 </span>
                             </div>
                             <div className="sign_in">
-                                <h1>Sign In</h1>
+                                <button type="submit">Sign In</button>
                                 <img src={loading} alt="loading" />
                             </div>
                             <div className="login_msg">

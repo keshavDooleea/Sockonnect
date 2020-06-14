@@ -202,15 +202,19 @@ $greenish: #27c1a7;
                     box-shadow: none;
                     position: relative;
 
-                    h1 {
+                    button {
                         width: 180px;
                         height: 50px;
+                        border: none;
+                        outline: none;
+                        font-weight: bold;
                         background-color: white;
                         color: $greenish;
                         font-size: 21px;
                         border-radius: 15px;
                         display: grid;
                         place-content: center;
+                        cursor: pointer;
                         @include greenBoxShadow();
                         
                         &:active {
@@ -227,7 +231,7 @@ $greenish: #27c1a7;
 
                 .reg_msg {
                     width: 50%;
-                    height: 50px;
+                    height: 55px;
                     opacity: 0.4;
 
                     div {
@@ -236,12 +240,22 @@ $greenish: #27c1a7;
                         border-top-left-radius: 15px;
                         border-bottom-left-radius: 15px;
                         box-shadow: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        img {
+                            width: 35%;
+                            height: 60%;
+                            opacity: 0;
+                        }
                     }
 
                     p {
                         width: 70%;
                         padding: 0 5px;
                         text-align: center;
+                        font-weight: bold;
                     }
                 }
             }

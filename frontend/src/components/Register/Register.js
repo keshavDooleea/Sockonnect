@@ -2,11 +2,43 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import showPassword from "../../assets/show_pass.png";
 import hidePassword from "../../assets/hide_pass.png";
+import errorCross from "../../assets/error.png";
+import check from "../../assets/check.png";
 import loading from "../../assets/loading.gif";
 import "./Register.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // 1280 x 610 
+
+function alertUser(text, isSuccess) {
+    const div = document.querySelector(".reg_msg");
+    const symbolDiv = document.querySelector(".reg_msg div");
+    const img = document.querySelector(".reg_msg div img");
+    const msg = document.querySelector(".reg_msg p");
+
+    div.style.opacity = "1";
+    img.style.opacity = "1";
+    msg.style.opacity = "1";
+    symbolDiv.style.opacity = "1";
+
+    msg.textContent = text;
+
+    if (isSuccess) {
+        img.src = check;
+        symbolDiv.style.backgroundColor = "white";
+        msg.style.color = "#fff";
+    } else {
+        img.src = errorCross;
+        symbolDiv.style.backgroundColor = "#b25757";
+        msg.style.color = "#b25757";
+    }
+
+    setTimeout(() => {
+        symbolDiv.style.opacity = "0";
+        msg.style.opacity = "0";
+        img.style.opacity = "0";
+    }, 2500);
+}
 
 class Register extends Component {
     constructor(props) {
@@ -14,9 +46,42 @@ class Register extends Component {
 
         this.state = {
             isShowEye: false,
+            url: "http://localhost:5000"
         };
 
         this.alternatePassword = this.alternatePassword.bind(this);
+    }
+
+    validateRegistration(e) {
+        e.preventDefault();
+        const username = document.getElementsByName("register_username")[0].value;
+        const password = document.getElementsByName("register_password")[0].value;
+
+        if (username.length < 6) {
+            alertUser("Username must be longer than 5 letters", false);
+            return;
+        } else if (password.length < 6) {
+            alertUser("Password must be longer than 5 letters", false);
+            return;
+        }
+
+        const user = {
+            username,
+            password
+        };
+
+        fetch(`${this.state.url}/register`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+
     }
 
     alternatePassword() {
@@ -71,22 +136,24 @@ class Register extends Component {
                         </div>
                         <form>
                             <div>
-                                <label htmlFor="username">Username</label>
-                                <input type="text" name="username" className="register_username_input" spellCheck="false" autoComplete="off" />
+                                <label htmlFor="register_username">Username</label>
+                                <input type="text" name="register_username" className="register_username_input" spellCheck="false" autoComplete="off" />
                             </div>
                             <div>
-                                <label htmlFor="password">Password</label>
-                                <input type="password" name="password" spellCheck="false" autoComplete="off" />
+                                <label htmlFor="register_password">Password</label>
+                                <input type="password" name="register_password" spellCheck="false" autoComplete="off" />
                                 <span>
                                     <img src={showPassword} alt="showPass" onClick={this.alternatePassword} />
                                 </span>
                             </div>
                             <div className="reg_acc">
-                                <h1>Register Account</h1>
+                                <button type="submit" onClick={(e) => this.validateRegistration(e)}>Register Account</button>
                                 <img src={loading} alt="loading" />
                             </div>
                             <div className="reg_msg">
-                                <div></div>
+                                <div>
+                                    <img src={errorCross} alt="error" />
+                                </div>
                                 <p></p>
                             </div>
                         </form>

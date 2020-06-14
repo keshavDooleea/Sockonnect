@@ -234,21 +234,25 @@
   position: relative;
 }
 
-.auth_body .auth_big_div .auth_div form .sign_in h1 {
+.auth_body .auth_big_div .auth_div form .sign_in button {
   width: 120px;
   height: 50px;
+  border: none;
+  outline: none;
+  font-weight: bold;
   background-color: white;
   color: #27c1a7;
   font-size: 21px;
   border-radius: 15px;
   display: -ms-grid;
   display: grid;
+  cursor: pointer;
   place-content: center;
   -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 
-.auth_body .auth_big_div .auth_div form .sign_in h1:active {
+.auth_body .auth_big_div .auth_div form .sign_in button:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
 }

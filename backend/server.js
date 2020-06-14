@@ -6,4 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.post("/register", (req, res) => {
+    console.log(req);
+})
+
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
