@@ -22,7 +22,6 @@ function alertUser(text, isSuccess) {
     img.style.opacity = "1";
     msg.style.opacity = "1";
     symbolDiv.style.opacity = "1";
-
     msg.textContent = text;
 
     if (isSuccess) {
@@ -95,15 +94,19 @@ class Login extends Component {
 
                 console.log(data);
 
-                // if (data === "EXISTS") {
-                //     alertUser("Username unavailable", false);
-                // } else if (data === "OK") {
-                //     alertUser("Account successfully created", true);
+                if (data === "USERNAME") {
+                    alertUser("Username incorrect", false);
+                } else if (data === "PASSWORD") {
+                    alertUser("Password incorrect", false);
+                } else if (data.status === "OK") {
+                    alertUser("Login successful", true);
+                    localStorage.setItem("token", data.token);
 
-                //     setTimeout(() => {
-                //         window.location.assign("/");
-                //     }, 2500);
-                // }
+                    setTimeout(() => {
+                        // window.location.assign("/");
+                        this.props.history.push("/home");
+                    }, 2500);
+                }
             })
 
     }
