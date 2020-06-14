@@ -76,6 +76,11 @@ class Register extends Component {
             password
         };
 
+        // show gif
+        document.querySelector(".reg_acc button").style.display = "none";
+        document.querySelector(".reg_acc img").style.display = "block";
+
+
         fetch(`${this.state.url}/register`, {
             method: "POST",
             body: JSON.stringify(user),
