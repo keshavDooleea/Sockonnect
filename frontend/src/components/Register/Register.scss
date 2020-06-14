@@ -252,17 +252,24 @@ $greenish: #27c1a7;
                         justify-content: center;
 
                         img {
-                            width: 35%;
-                            height: 60%;
+                            width: 30%;
+                            height: 45%;
                             opacity: 0;
                         }
                     }
 
                     p {
                         width: 70%;
+                        height: 100%;
+                        font-size: 19px;
                         padding: 0 5px;
                         text-align: center;
-                        font-weight: bold;
+                        font-weight: bolder;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
                 }
             }

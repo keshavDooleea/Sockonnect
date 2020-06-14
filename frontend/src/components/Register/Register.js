@@ -26,10 +26,12 @@ function alertUser(text, isSuccess) {
     if (isSuccess) {
         img.src = check;
         symbolDiv.style.backgroundColor = "white";
-        msg.style.color = "#fff";
+        msg.style.color = "white";
+        msg.style.backgroundColor = "#27c1a7";
     } else {
         img.src = errorCross;
         symbolDiv.style.backgroundColor = "#b25757";
+        msg.style.backgroundColor = "white";
         msg.style.color = "#b25757";
     }
 
@@ -62,11 +64,11 @@ class Register extends Component {
         if (username.length < 6) {
             alertUser("Username must be longer than 5 letters", false);
             return;
-        } else if (password.length < 6) {
-            alertUser("Password must be longer than 5 letters", false);
-            return;
         } else if (fullname.length < 6) {
             alertUser("Enter a valid name", false);
+            return;
+        } else if (password.length < 6) {
+            alertUser("Password must be longer than 5 letters", false);
             return;
         }
 
