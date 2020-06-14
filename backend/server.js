@@ -11,14 +11,11 @@ app.use(express.json());
 // kill node.exe pid : cmd "/C TASKKILL /IM node.exe /F"
 
 // mongo
-const User = require("./modals/User").User;
-
-mongo.connect(process.env.MONGO_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
     console.log("connected to DB!");
 });
 
-app.post("/register", (req, res) => {
-    console.log(req.body);
-})
+// middlewares
+app.use('/register', require("./routes/register"));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

@@ -90,7 +90,17 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(data => {
+                // show gif
+                document.querySelector(".reg_acc button").style.display = "block";
+                document.querySelector(".reg_acc img").style.display = "none";
+
                 console.log(data);
+
+                if (data === "EXISTS") {
+                    alertUser("Username unavailable", false);
+                } else if (data === "OK") {
+                    alertUser("Account successfully created", true);
+                }
             })
 
     }
