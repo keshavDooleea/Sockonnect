@@ -55,7 +55,7 @@ class Register extends Component {
 
     validateRegistration(e) {
         e.preventDefault();
-        const username = document.getElementsByName("register_username")[0].value;
+        const username = document.getElementsByName("register_username")[0].value.toLowerCase();
         const password = document.getElementsByName("register_password")[0].value;
         const fullname = document.getElementsByName("register_fullname")[0].value;
 
@@ -100,6 +100,10 @@ class Register extends Component {
                     alertUser("Username unavailable", false);
                 } else if (data === "OK") {
                     alertUser("Account successfully created", true);
+
+                    setTimeout(() => {
+                        window.location.assign("/");
+                    }, 2500);
                 }
             })
 

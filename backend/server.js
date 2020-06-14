@@ -11,9 +11,10 @@ app.use(express.json());
 // kill node.exe pid : cmd "/C TASKKILL /IM node.exe /F"
 
 // mongo
-mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }, () => {
+mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
     console.log("connected to DB!");
 });
+mongo.set("useCreateIndex", true);
 
 // middlewares
 app.use('/register', require("./routes/register"));
