@@ -266,13 +266,13 @@
 
 .auth_body .auth_big_div .auth_div form .sign_in img {
   position: absolute;
-  width: 25%;
+  width: 110%;
   display: none;
 }
 
 .auth_body .auth_big_div .auth_div form .login_msg {
   width: 50%;
-  height: 50px;
+  height: 55px;
   opacity: 0.4;
 }
 
@@ -283,12 +283,41 @@
   border-bottom-left-radius: 15px;
   -webkit-box-shadow: none;
           box-shadow: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.auth_body .auth_big_div .auth_div form .login_msg div img {
+  width: 30%;
+  height: 45%;
+  opacity: 0;
 }
 
 .auth_body .auth_big_div .auth_div form .login_msg p {
   width: 70%;
+  height: 100%;
+  font-size: 19px;
   padding: 0 5px;
   text-align: center;
+  font-weight: bolder;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .auth_body .auth_big_div .auth_div .sockonnect {

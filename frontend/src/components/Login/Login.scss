@@ -229,14 +229,14 @@ $greenish: #27c1a7;
 
                     img {
                         position: absolute;
-                        width: 25%;
+                        width: 110%;
                         display: none;
                     }
                 }
 
                 .login_msg {
                     width: 50%;
-                    height: 50px;
+                    height: 55px;
                     opacity: 0.4;
 
                     div {
@@ -245,12 +245,29 @@ $greenish: #27c1a7;
                         border-top-left-radius: 15px;
                         border-bottom-left-radius: 15px;
                         box-shadow: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        img {
+                            width: 30%;
+                            height: 45%;
+                            opacity: 0;
+                        }
                     }
 
                     p {
                         width: 70%;
+                        height: 100%;
+                        font-size: 19px;
                         padding: 0 5px;
                         text-align: center;
+                        font-weight: bolder;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
                 }
             }

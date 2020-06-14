@@ -3,11 +3,47 @@ import { Link, withRouter } from "react-router-dom";
 import showPassword from "../../assets/show_pass.png";
 import hidePassword from "../../assets/hide_pass.png";
 import loading from "../../assets/loading.gif";
+import errorCross from "../../assets/error.png";
+import check from "../../assets/check.png";
 import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // https://www.pinterest.ca/pin/590534569872873352/visual-search/?x=16&y=12&w=530&h=397
 // 1280 x 610 
+
+// msg shown to user
+function alertUser(text, isSuccess) {
+    const div = document.querySelector(".login_msg");
+    const symbolDiv = document.querySelector(".login_msg div");
+    const img = document.querySelector(".login_msg div img");
+    const msg = document.querySelector(".login_msg p");
+
+    div.style.opacity = "1";
+    img.style.opacity = "1";
+    msg.style.opacity = "1";
+    symbolDiv.style.opacity = "1";
+
+    msg.textContent = text;
+
+    if (isSuccess) {
+        img.src = check;
+        symbolDiv.style.backgroundColor = "white";
+        msg.style.color = "white";
+        msg.style.backgroundColor = "#27c1a7";
+    } else {
+        img.src = errorCross;
+        symbolDiv.style.backgroundColor = "#b25757";
+        msg.style.backgroundColor = "white";
+        msg.style.color = "#b25757";
+    }
+
+    setTimeout(() => {
+        symbolDiv.style.opacity = "0";
+        msg.style.opacity = "0";
+        img.style.opacity = "0";
+        div.style.opacity = "0.4";
+    }, 2500);
+}
 
 class Login extends Component {
     constructor(props) {
@@ -15,9 +51,61 @@ class Login extends Component {
 
         this.state = {
             isShowEye: false,
+            url: "http://localhost:5000"
         };
 
         this.alternatePassword = this.alternatePassword.bind(this);
+    }
+
+    validateRegistration(e) {
+        e.preventDefault();
+        const username = document.getElementsByName("username")[0].value.toLowerCase();
+        const password = document.getElementsByName("password")[0].value;
+
+        if (username.length < 6) {
+            alertUser("Username must be longer than 5 letters", false);
+            return;
+        } else if (password.length < 6) {
+            alertUser("Password must be longer than 5 letters", false);
+            return;
+        }
+
+        const user = {
+            username,
+            password
+        };
+
+        // show gif
+        document.querySelector(".sign_in button").style.display = "none";
+        document.querySelector(".sign_in img").style.display = "block";
+
+
+        fetch(`${this.state.url}/login`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // show gif
+                document.querySelector(".sign_in button").style.display = "block";
+                document.querySelector(".sign_in img").style.display = "none";
+
+                console.log(data);
+
+                // if (data === "EXISTS") {
+                //     alertUser("Username unavailable", false);
+                // } else if (data === "OK") {
+                //     alertUser("Account successfully created", true);
+
+                //     setTimeout(() => {
+                //         window.location.assign("/");
+                //     }, 2500);
+                // }
+            })
+
     }
 
     alternatePassword() {
@@ -80,11 +168,13 @@ class Login extends Component {
                                 </span>
                             </div>
                             <div className="sign_in">
-                                <button type="submit">Sign In</button>
+                                <button type="submit" onClick={(e) => this.validateRegistration(e)}>Sign In</button>
                                 <img src={loading} alt="loading" />
                             </div>
                             <div className="login_msg">
-                                <div></div>
+                                <div>
+                                    <img src={errorCross} alt="error" />
+                                </div>
                                 <p></p>
                             </div>
                         </form>

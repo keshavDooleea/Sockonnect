@@ -10,6 +10,7 @@ import "./Register.css";
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // 1280 x 610 
 
+// msg shown to user
 function alertUser(text, isSuccess) {
     const div = document.querySelector(".reg_msg");
     const symbolDiv = document.querySelector(".reg_msg div");
