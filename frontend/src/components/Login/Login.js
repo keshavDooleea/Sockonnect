@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import showPassword from "../assets/show_pass.png";
-import hidePassword from "../assets/hide_pass.png";
-import "../App.css"
+import { Link } from "react-router-dom";
+import showPassword from "../../assets/show_pass.png";
+import hidePassword from "../../assets/hide_pass.png";
+import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // 1280 x 610 
@@ -49,7 +50,7 @@ class Login extends Component {
                     <h1>Login</h1>
                 </div>
                 <div className="reg_h1">
-                    <h1>Register</h1>
+                    <Link to="/register" >Register</Link>
                 </div>
                 <div className="auth_big_div">
                     <div className="auth_div">

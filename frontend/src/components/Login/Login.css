@@ -1,0 +1,349 @@
+@font-face {
+  font-family: blogger;
+  src: url("../../assets/blogger_sans.otf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: blogger;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 21px;
+}
+
+.auth_body {
+  width: 100vw;
+  height: 100vh;
+  color: #cfd1d5;
+  background-color: #23252a;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 85%;
+      grid-template-columns: 15% 85%;
+  -ms-grid-rows: 45% 10% 45%;
+      grid-template-rows: 45% 10% 45%;
+      grid-template-areas: "login     auth" ".         auth" "register  auth";
+}
+
+.auth_body .login_h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: login;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  text-align: center;
+  color: #27c1a7;
+}
+
+.auth_body .reg_h1 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: register;
+  text-align: center;
+  color: #45474c;
+  position: relative;
+}
+
+.auth_body .reg_h1 a {
+  text-decoration: none;
+  color: #45474c;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.auth_body .reg_h1 a::after {
+  content: "Register";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: #cfd1d5;
+  pointer-events: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+}
+
+.auth_body .reg_h1 a:hover::after {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.auth_body h1 {
+  display: inline-block;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.auth_body .auth_big_div {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
+  grid-area: auth;
+  background-color: #27c1a7;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  -webkit-box-shadow: -2px -2px 50px black;
+          box-shadow: -2px -2px 50px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.auth_body .auth_big_div .auth_div {
+  width: 95%;
+  height: 95%;
+  margin-right: 10px;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr 1fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr 1fr;
+  -ms-grid-rows: 0.5fr 3fr 1fr;
+      grid-template-rows: 0.5fr 3fr 1fr;
+      grid-template-areas: "path  .     sock   sock" "path  form  form   ." "path  form  form   RD";
+}
+
+.auth_body .auth_big_div .auth_div .auth_path {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: path;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  pointer-events: none;
+}
+
+.auth_body .auth_big_div .auth_div .auth_path h1 {
+  text-align: center;
+  font-size: 60px;
+  opacity: 0.3;
+}
+
+.auth_body .auth_big_div .auth_div form {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: form;
+  width: 80%;
+  height: 90%;
+  justify-self: center;
+  border-radius: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form > div {
+  width: 80%;
+  height: 55px;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form > div label {
+  width: 25%;
+  text-align: center;
+}
+
+.auth_body .auth_big_div .auth_div form > div input {
+  height: 100%;
+  width: 55%;
+  border: none;
+  font-size: 22px;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.auth_body .auth_big_div .auth_div form > div span {
+  width: 20%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.auth_body .auth_big_div .auth_div form > div span img {
+  width: 45%;
+  height: 70%;
+  cursor: pointer;
+  opacity: 0.3;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.auth_body .auth_big_div .auth_div form > div span img:hover {
+  opacity: 1;
+}
+
+.auth_body .auth_big_div .auth_div form > div .login_username_input {
+  width: 75%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in h1 {
+  width: 120px;
+  height: 50px;
+  background-color: white;
+  color: #27c1a7;
+  font-size: 21px;
+  border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form .sign_in h1:active {
+  -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+          box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.auth_body .auth_big_div .auth_div form .login_msg {
+  width: 50%;
+  height: 50px;
+  opacity: 0.4;
+}
+
+.auth_body .auth_big_div .auth_div form .login_msg div {
+  width: 30%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.auth_body .auth_big_div .auth_div form .login_msg p {
+  width: 70%;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.auth_body .auth_big_div .auth_div .sockonnect {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-area: sock;
+  text-align: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  letter-spacing: 2px;
+  pointer-events: none;
+  margin-right: 5%;
+}
+
+.auth_body .auth_big_div .auth_div .sockonnect h1 {
+  text-align: center;
+  letter-spacing: 4.5px;
+}
+
+.auth_body .auth_big_div .auth_div .RD_auth_round {
+  -ms-grid-row: 3;
+  -ms-grid-column: 4;
+  grid-area: RD;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+.auth_body .auth_big_div .auth_div .RD_auth_round div {
+  width: 100px;
+  height: 100px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  border: 4px solid #27c1a7;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.08), inset 0 -15px 15px rgba(255, 255, 255, 0.08), 0 15px 15px rgba(0, 0, 0, 0.08), inset 0 15px 15px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.08), inset 0 -15px 15px rgba(255, 255, 255, 0.08), 0 15px 15px rgba(0, 0, 0, 0.08), inset 0 15px 15px rgba(0, 0, 0, 0.08);
+}
+
+.auth_body .auth_big_div .auth_div .RD_auth_round div h2 {
+  -webkit-animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
+          animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
+}
+
+@-webkit-keyframes spin_rd {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin_rd {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=Login.css.map */

@@ -1,7 +1,7 @@
 //  FONTS ***********************************************
 @font-face {
     font-family: blogger;
-    src: url("./assets/blogger_sans.otf");
+    src: url("../../assets/blogger_sans.otf");
 }
 
 //  VARIABLES *******************************************
@@ -38,7 +38,7 @@ $greenish: #27c1a7;
     font-size: 21px;
 }
   
-.auth_body {
+.reg_auth_body {
     width: 100vw;
     height: 100vh;
     color: $textColor;
@@ -52,36 +52,44 @@ $greenish: #27c1a7;
         ".         auth"
         "register  auth";
 
-    .login_h1 {
+    .reg_login_h1 {
         grid-area: login;
         align-self: flex-end;
         text-align: center;
-        color: $greenish;
+        position: relative;
+        color: $darkgrey;
+
+        a {
+            text-decoration: none;
+            color: $darkgrey;
+            font-size: 28px;
+            font-weight: bold;
+
+            &::after {
+                content: "Login";
+                position: absolute;
+                width: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                color: $textColor;
+                pointer-events: none;
+                transition: 0.3s;
+                transform: translateY(-40px);
+            }
+    
+            &:hover::after {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 
-    .reg_h1 {
+    .reg_reg_h1 {
         grid-area: register;
         text-align: center;
         color: $darkgrey;
-        position: relative;
-        
-        h1::after {
-            content: "Register";
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            color: $textColor;
-            pointer-events: none;
-            transition: 0.3s;
-            transform: translateY(40px);
-        }
-
-        h1:hover::after {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        color: $greenish;
     }
 
     h1 {
@@ -90,7 +98,7 @@ $greenish: #27c1a7;
         cursor: pointer;
     }
 
-    .auth_big_div {
+    .reg_auth_big_div {
         grid-area: auth;
         background-color: $greenish;
         border-top-left-radius: 50px;
@@ -100,7 +108,7 @@ $greenish: #27c1a7;
         align-items: center;
         justify-content: flex-end;
 
-        .auth_div {
+        .reg_auth_div {
             width: 95%;
             height: 95%;
             margin-right: 10px;
@@ -113,7 +121,7 @@ $greenish: #27c1a7;
                 "path  form  form   ."
                 "path  form  form   RD";
             
-            .auth_path {
+            .reg_auth_path {
                 grid-area: path;
                 display: grid;
                 place-content: center;
@@ -121,7 +129,7 @@ $greenish: #27c1a7;
 
                 h1 {
                     text-align: center;
-                    font-size: 60px;
+                    font-size: 45px;
                     opacity: 0.3;
                 }
             }
@@ -183,18 +191,18 @@ $greenish: #27c1a7;
                         }
                     }
                     
-                    .login_username_input {
+                    .register_username_input {
                         width: 75%;
                         border-top-right-radius: 15px;
                         border-bottom-right-radius: 15px;
                     }
                 }
 
-                .sign_in {
+                .reg_acc {
                     box-shadow: none;
 
                     h1 {
-                        width: 120px;
+                        width: 180px;
                         height: 50px;
                         background-color: white;
                         color: $greenish;
@@ -210,7 +218,7 @@ $greenish: #27c1a7;
                     }
                 }
 
-                .login_msg {
+                .reg_msg {
                     width: 50%;
                     height: 50px;
                     opacity: 0.4;
@@ -231,7 +239,7 @@ $greenish: #27c1a7;
                 }
             }
 
-            .sockonnect {
+            .reg_sockonnect {
                 grid-area: sock;
                 text-align: justify;
                 display: flex;

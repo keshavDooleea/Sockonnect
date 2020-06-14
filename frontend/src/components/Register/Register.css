@@ -1,6 +1,6 @@
 @font-face {
   font-family: blogger;
-  src: url("./assets/blogger_sans.otf");
+  src: url("../../assets/blogger_sans.otf");
 }
 
 * {
@@ -14,7 +14,7 @@
   font-size: 21px;
 }
 
-.auth_body {
+.reg_auth_body {
   width: 100vw;
   height: 100vh;
   color: #cfd1d5;
@@ -29,27 +29,26 @@
       grid-template-areas: "login     auth" ".         auth" "register  auth";
 }
 
-.auth_body .login_h1 {
+.reg_auth_body .reg_login_h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: login;
   -ms-flex-item-align: end;
       align-self: flex-end;
   text-align: center;
-  color: #27c1a7;
-}
-
-.auth_body .reg_h1 {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: register;
-  text-align: center;
-  color: #45474c;
   position: relative;
+  color: #45474c;
 }
 
-.auth_body .reg_h1 h1::after {
-  content: "Register";
+.reg_auth_body .reg_login_h1 a {
+  text-decoration: none;
+  color: #45474c;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.reg_auth_body .reg_login_h1 a::after {
+  content: "Login";
   position: absolute;
   width: 100%;
   top: 0;
@@ -59,23 +58,32 @@
   pointer-events: none;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  -webkit-transform: translateY(40px);
-          transform: translateY(40px);
+  -webkit-transform: translateY(-40px);
+          transform: translateY(-40px);
 }
 
-.auth_body .reg_h1 h1:hover::after {
+.reg_auth_body .reg_login_h1 a:hover::after {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
 
-.auth_body h1 {
+.reg_auth_body .reg_reg_h1 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: register;
+  text-align: center;
+  color: #45474c;
+  color: #27c1a7;
+}
+
+.reg_auth_body h1 {
   display: inline-block;
   font-size: 28px;
   cursor: pointer;
 }
 
-.auth_body .auth_big_div {
+.reg_auth_body .reg_auth_big_div {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 2;
@@ -96,7 +104,7 @@
           justify-content: flex-end;
 }
 
-.auth_body .auth_big_div .auth_div {
+.reg_auth_body .reg_auth_big_div .reg_auth_div {
   width: 95%;
   height: 95%;
   margin-right: 10px;
@@ -110,7 +118,7 @@
       grid-template-areas: "path  .     sock   sock" "path  form  form   ." "path  form  form   RD";
 }
 
-.auth_body .auth_big_div .auth_div .auth_path {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .reg_auth_path {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
@@ -121,13 +129,13 @@
   pointer-events: none;
 }
 
-.auth_body .auth_big_div .auth_div .auth_path h1 {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .reg_auth_path h1 {
   text-align: center;
-  font-size: 60px;
+  font-size: 45px;
   opacity: 0.3;
 }
 
-.auth_body .auth_big_div .auth_div form {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
@@ -154,7 +162,7 @@
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 
-.auth_body .auth_big_div .auth_div form > div {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div {
   width: 80%;
   height: 55px;
   border-radius: 15px;
@@ -171,12 +179,12 @@
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 
-.auth_body .auth_big_div .auth_div form > div label {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div label {
   width: 25%;
   text-align: center;
 }
 
-.auth_body .auth_big_div .auth_div form > div input {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div input {
   height: 100%;
   width: 55%;
   border: none;
@@ -186,7 +194,7 @@
           box-sizing: border-box;
 }
 
-.auth_body .auth_big_div .auth_div form > div span {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div span {
   width: 20%;
   height: 100%;
   display: -webkit-box;
@@ -202,7 +210,7 @@
   border-bottom-right-radius: 15px;
 }
 
-.auth_body .auth_big_div .auth_div form > div span img {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div span img {
   width: 45%;
   height: 70%;
   cursor: pointer;
@@ -211,23 +219,23 @@
   transition: 0.2s;
 }
 
-.auth_body .auth_big_div .auth_div form > div span img:hover {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div span img:hover {
   opacity: 1;
 }
 
-.auth_body .auth_big_div .auth_div form > div .login_username_input {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form > div .register_username_input {
   width: 75%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
-.auth_body .auth_big_div .auth_div form .sign_in {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.auth_body .auth_big_div .auth_div form .sign_in h1 {
-  width: 120px;
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1 {
+  width: 180px;
   height: 50px;
   background-color: white;
   color: #27c1a7;
@@ -240,18 +248,18 @@
           box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 
-.auth_body .auth_big_div .auth_div form .sign_in h1:active {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_acc h1:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
 }
 
-.auth_body .auth_big_div .auth_div form .login_msg {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg {
   width: 50%;
   height: 50px;
   opacity: 0.4;
 }
 
-.auth_body .auth_big_div .auth_div form .login_msg div {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg div {
   width: 30%;
   height: 100%;
   border-top-left-radius: 15px;
@@ -260,13 +268,13 @@
           box-shadow: none;
 }
 
-.auth_body .auth_big_div .auth_div form .login_msg p {
+.reg_auth_body .reg_auth_big_div .reg_auth_div form .reg_msg p {
   width: 70%;
   padding: 0 5px;
   text-align: center;
 }
 
-.auth_body .auth_big_div .auth_div .sockonnect {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .reg_sockonnect {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
@@ -287,12 +295,12 @@
   margin-right: 5%;
 }
 
-.auth_body .auth_big_div .auth_div .sockonnect h1 {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .reg_sockonnect h1 {
   text-align: center;
   letter-spacing: 4.5px;
 }
 
-.auth_body .auth_big_div .auth_div .RD_auth_round {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .RD_auth_round {
   -ms-grid-row: 3;
   -ms-grid-column: 4;
   grid-area: RD;
@@ -301,7 +309,7 @@
   place-content: center;
 }
 
-.auth_body .auth_big_div .auth_div .RD_auth_round div {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .RD_auth_round div {
   width: 100px;
   height: 100px;
   display: -ms-grid;
@@ -313,7 +321,7 @@
           box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.08), inset 0 -15px 15px rgba(255, 255, 255, 0.08), 0 15px 15px rgba(0, 0, 0, 0.08), inset 0 15px 15px rgba(0, 0, 0, 0.08);
 }
 
-.auth_body .auth_big_div .auth_div .RD_auth_round div h2 {
+.reg_auth_body .reg_auth_big_div .reg_auth_div .RD_auth_round div h2 {
   -webkit-animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
           animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
 }
@@ -339,4 +347,4 @@
             transform: rotate(360deg);
   }
 }
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=Register.css.map */

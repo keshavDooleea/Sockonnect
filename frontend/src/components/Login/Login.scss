@@ -1,0 +1,290 @@
+//  FONTS ***********************************************
+@font-face {
+    font-family: blogger;
+    src: url("../../assets/blogger_sans.otf");
+}
+
+//  VARIABLES *******************************************
+$bkgColor: #23252a; 
+$textColor: #cfd1d5;
+$darkgrey: #45474c;
+$redish: #b76e79;
+$greenish: #27c1a7;
+
+//  FUNCTIONS *******************************************
+@mixin rdBoxShadow {
+    box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.08),
+                inset 0 -15px 15px rgba(255, 255, 255, 0.08),
+                0 15px 15px rgba(0, 0, 0, 0.08),
+                inset 0 15px 15px rgba(0, 0, 0, 0.08);
+}
+
+@mixin greenBoxShadow {
+    box-shadow:  6px 6px 13px #21a48e, 
+                 -6px -6px 13px #2ddec0;
+}
+
+@mixin activeButtonsShadow {
+    box-shadow: inset 6px 6px 13px #21a48e, 
+                inset -6px -6px 13px #2ddec0;
+}
+
+//  STYLES **********************************************
+* {
+    padding: 0;
+    margin: 0;
+    font-family: blogger;
+    user-select: none;
+    font-size: 21px;
+}
+  
+.auth_body {
+    width: 100vw;
+    height: 100vh;
+    color: $textColor;
+    background-color: $bkgColor;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 45% 10% 45%;
+    grid-template-areas: 
+        "login     auth"
+        ".         auth"
+        "register  auth";
+
+    .login_h1 {
+        grid-area: login;
+        align-self: flex-end;
+        text-align: center;
+        color: $greenish;
+    }
+
+    .reg_h1 {
+        grid-area: register;
+        text-align: center;
+        color: $darkgrey;
+        position: relative;
+
+        a {
+            text-decoration: none;
+            color: $darkgrey;
+            font-size: 28px;
+            font-weight: bold;
+
+            &::after {
+                content: "Register";
+                position: absolute;
+                width: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                color: $textColor;
+                pointer-events: none;
+                transition: 0.3s;
+                transform: translateY(40px);
+            }
+    
+            &:hover::after {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    h1 {
+        display: inline-block;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .auth_big_div {
+        grid-area: auth;
+        background-color: $greenish;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        box-shadow: -2px -2px 50px rgba(0, 0, 0, 1);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .auth_div {
+            width: 95%;
+            height: 95%;
+            margin-right: 10px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr;
+            grid-template-rows: 0.5fr 3fr 1fr;
+            grid-template-areas: 
+                "path  .     sock   sock"
+                "path  form  form   ."
+                "path  form  form   RD";
+            
+            .auth_path {
+                grid-area: path;
+                display: grid;
+                place-content: center;
+                pointer-events: none;
+
+                h1 {
+                    text-align: center;
+                    font-size: 60px;
+                    opacity: 0.3;
+                }
+            }
+
+            form {
+                grid-area: form;
+                width: 80%;
+                height: 90%;
+                justify-self: center;
+                border-radius: 36px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                @include greenBoxShadow();
+
+                & > div {
+                    width: 80%;
+                    height: 55px;
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    @include greenBoxShadow();
+
+                    label {
+                        width: 25%;
+                        text-align: center;
+                    }
+
+                    input {
+                        height: 100%;
+                        width: 55%;
+                        border: none;
+                        font-size: 22px;
+                        padding: 0 5px;
+                        box-sizing: border-box;
+                    }     
+
+                    span {
+                        width: 20%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+
+                        img {
+                            width: 45%;
+                            height: 70%;
+                            cursor: pointer;
+                            opacity: 0.3;
+                            transition: 0.2s;
+
+                            &:hover {
+                                opacity: 1;
+                            }                           
+                        }
+                    }
+                    
+                    .login_username_input {
+                        width: 75%;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                    }
+                }
+
+                .sign_in {
+                    box-shadow: none;
+
+                    h1 {
+                        width: 120px;
+                        height: 50px;
+                        background-color: white;
+                        color: $greenish;
+                        font-size: 21px;
+                        border-radius: 15px;
+                        display: grid;
+                        place-content: center;
+                        @include greenBoxShadow();
+                        
+                        &:active {
+                            @include activeButtonsShadow();
+                        }
+                    }
+                }
+
+                .login_msg {
+                    width: 50%;
+                    height: 50px;
+                    opacity: 0.4;
+
+                    div {
+                        width: 30%;
+                        height: 100%;
+                        border-top-left-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        box-shadow: none;
+                    }
+
+                    p {
+                        width: 70%;
+                        padding: 0 5px;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .sockonnect {
+                grid-area: sock;
+                text-align: justify;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                letter-spacing: 2px;
+                pointer-events: none;
+                margin-right: 5%;
+
+                h1 {
+                    text-align: center;
+                    letter-spacing: 4.5px;
+                }
+            }
+
+            .RD_auth_round {
+                grid-area: RD;
+                display: grid;
+                place-content: center;
+                
+                div {
+                    width: 100px;
+                    height: 100px;
+                    display: grid;
+                    place-content: center;
+                    border: 4px solid $greenish;
+                    border-radius: 50%;
+                    @include rdBoxShadow();
+
+                    h2 {
+                        animation: spin_rd infinite 4s cubic-bezier(0.64, -0.16, 0.36, 1.56);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// ANIMATIONS *************************************************************************
+// R D
+@keyframes spin_rd {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
