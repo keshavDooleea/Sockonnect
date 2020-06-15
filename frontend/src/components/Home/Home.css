@@ -294,8 +294,6 @@
   cursor: pointer;
   background-color: #27c1a7;
   border-radius: 15px;
-  -webkit-box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.4);
-          box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.4);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
