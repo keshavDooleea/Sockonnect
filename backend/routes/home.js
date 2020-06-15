@@ -10,16 +10,25 @@ router.route("/mydata").get((req, res) => {
 
 router.route("/alldata").get((req, res) => {
     let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
-    let usernamesArray = [];
+    let username, fullname;
+    let people = {
+        username,
+        fullname
+    };
+    let array = [];
 
+    // send back everybodys username and fullname
     User.find({}, (err, user) => {
-        user.forEach(person => {
-            if (person.username != decodedUser.username) {
-                usernamesArray.push(person.username);
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].username != decodedUser.username) {
+                people.username = user[i].username;
+                people.fullname = user[i].fullname;
+                array.push(people);
+                people = {};
             }
-        })
-        res.json(usernamesArray);
-    })
+        }
+        res.json(array);
+    });
 });
 
 module.exports = router;

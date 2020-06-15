@@ -9,7 +9,8 @@ class Home extends Component {
         this.state = {
             url: "http://localhost:5000",
             myData: [],
-            allData: []
+            allData: [],
+            isSearching: false
         };
     }
 
@@ -45,7 +46,19 @@ class Home extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                this.setState({
+                    allData: data,
+                });
             });
+    }
+
+    showPeople() {
+        let searchWord = document.querySelector(".addFriends_div input").value;
+
+
+        return <div>
+            {searchWord}
+        </div>;
     }
 
     render() {
@@ -67,7 +80,11 @@ class Home extends Component {
                 <div className="addFriends_div">
                     <h1>SEARCH</h1>
 
-                    <div className="usersList"></div>
+                    <input type="text" onChange={() => { this.setState({ isSearching: true }) }} spellCheck="false" autoComplete="off" placeholder="Username or Full Name" />
+
+                    <div className="usersList">
+                        {this.state.isSearching ? this.showPeople() : null}
+                    </div>
                 </div>
             </div>
         );

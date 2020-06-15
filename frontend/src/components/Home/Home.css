@@ -137,9 +137,9 @@
           box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.4);
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 15% 10% 75%;
-      grid-template-rows: 15% 10% 75%;
-      grid-template-areas: "." "searchTitle" "usersList";
+  -ms-grid-rows: 15% 10% 10% 65%;
+      grid-template-rows: 15% 10% 10% 65%;
+      grid-template-areas: "." "searchTitle" "searchPeople" "usersList";
 }
 
 .home_body .addFriends_div > h1 {
@@ -154,9 +154,53 @@
   color: white;
 }
 
-.home_body .addFriends_div .usersList {
+.home_body .addFriends_div > input {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
+  grid-area: searchPeople;
+  width: 75%;
+  height: 70%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  border-radius: 15px;
+  padding-left: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+}
+
+.home_body .addFriends_div > input::-webkit-input-placeholder {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.home_body .addFriends_div > input:-ms-input-placeholder {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.home_body .addFriends_div > input::-ms-input-placeholder {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.home_body .addFriends_div > input::placeholder {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.home_body .addFriends_div .usersList {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
   grid-area: usersList;
+  margin: 40px;
+  border-radius: 15px;
+  -webkit-box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
+          box-shadow: 6px 6px 13px #21a48e,  -6px -6px 13px #2ddec0;
 }
 /*# sourceMappingURL=Home.css.map */
