@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import addImg from "../../assets/add.png";
 import "./Home.css";
 
 class Home extends Component {
@@ -65,7 +66,9 @@ class Home extends Component {
                         <h4 key={item.fullname}>{item.fullname}</h4>
                     </div>
                     <div className="people_add_div">
-                        <span>Add Friend</span>
+                        <span>
+                            <img src={addImg} alt="addFriend" />
+                        </span>
                     </div>
                 </div>
             ))}

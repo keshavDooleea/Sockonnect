@@ -177,7 +177,7 @@ $greenish: #27c1a7;
                   background-color: white;
                   margin: 10px 0;
                   border-radius: 15px;
-                  padding: 0 10px;
+                  padding: 0 15px;
                   box-sizing: border-box;
                   display: flex;
                   @include greenBoxShadow();
@@ -204,26 +204,31 @@ $greenish: #27c1a7;
                       height: 100%;
                       display: flex;
                       align-items: center;
-                      justify-content: center;
+                      justify-content: flex-end;
 
                       span {
-                          width: 115%;
+                          width: 35px;
                           height: 35px;
                           display: grid;
                           place-content: center;
                           color: white;
                           cursor: pointer;
                           background-color: $greenish;
-                          border-radius: 15px;
-                          transition: 0.4s;   
+                          border-radius: 8px;
+                          transition: 0.5s;   
                           
                           &:hover {
-                              transform: translateX(-10px);
+                            transform: rotate(45deg);
                           }
 
                           &:active {
                             @include activeButtonsShadow();
-                        }
+                          }
+
+                          img {
+                            width: 22px;
+                            height: 22px;   
+                          }
                       }
                   }
               }

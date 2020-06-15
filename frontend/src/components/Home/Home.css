@@ -242,7 +242,7 @@
   background-color: white;
   margin: 10px 0;
   border-radius: 15px;
-  padding: 0 10px;
+  padding: 0 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -webkit-box;
@@ -285,13 +285,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .home_body .addFriends_div .usersList > div .people_list_item .people_add_div span {
-  width: 115%;
+  width: 35px;
   height: 35px;
   display: -ms-grid;
   display: grid;
@@ -299,18 +299,23 @@
   color: white;
   cursor: pointer;
   background-color: #27c1a7;
-  border-radius: 15px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  border-radius: 8px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .home_body .addFriends_div .usersList > div .people_list_item .people_add_div span:hover {
-  -webkit-transform: translateX(-10px);
-          transform: translateX(-10px);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .home_body .addFriends_div .usersList > div .people_list_item .people_add_div span:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
+}
+
+.home_body .addFriends_div .usersList > div .people_list_item .people_add_div span img {
+  width: 22px;
+  height: 22px;
 }
 /*# sourceMappingURL=Home.css.map */
