@@ -32,7 +32,7 @@ router.route("/").post(async (req, res) => {
                     };
 
                     // generate jwt token
-                    let token = jwt.sign(loggedUser, process.env.JWT_TOKEN, { expiresIn: 2000 });
+                    let token = jwt.sign(loggedUser, process.env.JWT_TOKEN, {});
                     res.json({
                         status: "OK",
                         token: token

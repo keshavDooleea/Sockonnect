@@ -16,5 +16,6 @@ mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUr
 // middlewares
 app.use('/login', require("./routes/login"));
 app.use('/register', require("./routes/register"));
+app.use('/home', require("./routes/home"));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
