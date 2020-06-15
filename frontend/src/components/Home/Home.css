@@ -30,6 +30,7 @@
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: friends;
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 15% 10% 75%;
@@ -48,6 +49,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 2;
+}
+
+.home_body .friends_div .hamburger .rotateHamUp {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.home_body .friends_div .hamburger .rotateHamDown {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 
 .home_body .friends_div .hamburger div {
@@ -112,6 +124,89 @@
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: friendsList;
+}
+
+.home_body .friends_div .hamburger_div {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 130%;
+  height: 100%;
+  background-color: #23252a;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  -webkit-box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.4);
+          box-shadow: -2px -2px 50px rgba(0, 0, 0, 0.4);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 15% 10% 75%;
+      grid-template-rows: 15% 10% 75%;
+      grid-template-areas: "." "account" "req";
+}
+
+.home_body .friends_div .hamburger_div .account_div {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: account;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home_body .friends_div .hamburger_div .account_div button {
+  width: 40%;
+  height: 75%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-weight: bolder;
+  border-radius: 15px;
+  color: #cfd1d5;
+  letter-spacing: 1px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background-color: #23252a;
+  -webkit-box-shadow: 5px 5px 7px #1d1e22,  -5px -5px 7px #292c32;
+          box-shadow: 5px 5px 7px #1d1e22,  -5px -5px 7px #292c32;
+}
+
+.home_body .friends_div .hamburger_div .account_div button:hover {
+  color: #23252a;
+  background-color: #cfd1d5;
+}
+
+.home_body .friends_div .hamburger_div .account_div button:active {
+  -webkit-box-shadow: inset 5px 5px 7px #1d1e22,  inset -5px -5px 7px #292c32;
+          box-shadow: inset 5px 5px 7px #1d1e22,  inset -5px -5px 7px #292c32;
+}
+
+.home_body .friends_div .hamburger_div .req_div {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: req;
+}
+
+.home_body .friends_div .openHam {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.home_body .friends_div .closeHam {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .home_body .chat_div {
