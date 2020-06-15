@@ -103,7 +103,6 @@ class Login extends Component {
                     localStorage.setItem("token", data.token);
 
                     setTimeout(() => {
-                        // window.location.assign("/");
                         this.props.history.push("/home");
                     }, 2500);
                 }
