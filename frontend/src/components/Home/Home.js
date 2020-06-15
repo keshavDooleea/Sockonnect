@@ -53,19 +53,9 @@ class Home extends Component {
             });
     }
 
+    // displays the name of all users
     showPeople() {
-        // let searchWord = document.querySelector(".addFriends_div input").value.toUpperCase();
         let data = this.state.allData;
-        // let text;
-
-        // for (let i = 0; i < data.length; i++) {
-        //     text = data[i].username || data[i].fullname;
-        //     if (text.toUpperCase().indexOf(searchWord) > -1) {
-        //         console.log(data[i]);
-        //     } else {
-        //         // li[i].style.display = "none";
-        //     }
-        // }
 
         return <div>
             {data.map(item => (
@@ -80,6 +70,23 @@ class Home extends Component {
                 </div>
             ))}
         </div>;
+    }
+
+    // filter the names of people
+    filterPeople() {
+        let searchWord = document.querySelector(".addFriends_div input").value.toUpperCase();
+        let div = document.querySelectorAll(".people_list_item");
+        let data = this.state.allData;
+        let text;
+
+        for (let i = 0; i < data.length; i++) {
+            text = data[i].username || data[i].fullname;
+            if (text.toUpperCase().indexOf(searchWord) > -1) {
+                div[i].style.display = "flex";
+            } else {
+                div[i].style.display = "none";
+            }
+        }
     }
 
     render() {
@@ -101,7 +108,7 @@ class Home extends Component {
                 <div className="addFriends_div">
                     <h1>SEARCH</h1>
 
-                    <input type="text" onChange={() => { this.setState({ isSearching: true }) }} spellCheck="false" autoComplete="off" placeholder="Username or Full Name" />
+                    <input type="text" onChange={() => this.filterPeople()} spellCheck="false" autoComplete="off" placeholder="Username or Full Name" />
 
                     <div className="usersList">
                         {this.state.isDataFetched ? this.showPeople() : null}

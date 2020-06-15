@@ -199,8 +199,13 @@
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: usersList;
-  margin: 40px;
+  width: 75%;
+  height: 85%;
+  margin: 20px 0 40px 0;
   border-radius: 15px;
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,6 +233,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: auto;
 }
 
 .home_body .addFriends_div .usersList > div .people_list_item {
