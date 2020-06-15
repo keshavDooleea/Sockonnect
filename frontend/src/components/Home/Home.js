@@ -8,7 +8,13 @@ class Home extends Component {
         return (
             <div className="home_body">
                 <div className="friends_div">
-                    <div className="hamburger"></div>
+                    <div className="hamburger">
+                        <div>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                     <h1>FRIENDS</h1>
                     <div className="friendList"></div>
                 </div>
