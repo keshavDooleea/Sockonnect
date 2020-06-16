@@ -45,9 +45,12 @@ io.on("connection", socket => {
     socket.on("newUserConnected", data => {
         let decodedUser = jwt.verify(data.token, process.env.JWT_TOKEN);
         username = decodedUser.username;
-        console.log(username);
 
         socket.broadcast.emit('message', `${username} is now connected`);
+
+        // refresh all existing users
+        refreshUsers(socket, username);
+
 
         // when user disconnects => removes active button
         socket.on("disconnect", () => {
@@ -56,14 +59,7 @@ io.on("connection", socket => {
     });
 });
 
-// HOME routes
-app.get("/home/mydata", (req, res) => {
-    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
-    // console.log(decodedUser);
-});
-
-app.get("/home/alldata", (req, res) => {
-    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
+function refreshUsers(socket, currentUsername) {
     let username, fullname;
     let people = {
         username,
@@ -74,15 +70,22 @@ app.get("/home/alldata", (req, res) => {
     // send back everybodys username and fullname
     User.find({}, (err, user) => {
         for (let i = 0; i < user.length; i++) {
-            if (user[i].username != decodedUser.username) {
+            if (user[i].username != currentUsername) {
                 people.username = user[i].username;
                 people.fullname = user[i].fullname;
                 array.push(people);
                 people = {};
             }
         }
-        res.json(array);
+        // res.json(array);
+        socket.emit("allUsers", array);
     });
+}
+
+// HOME routes
+app.get("/home/mydata", (req, res) => {
+    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
+    // console.log(decodedUser);
 });
 
 app.post("/home/request", (req, res) => {

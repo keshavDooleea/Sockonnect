@@ -20,7 +20,6 @@ class Home extends Component {
 
     componentDidMount() {
         // this.getMyData();
-        this.getAllData();
         this.handleSocket();
     }
 
@@ -39,23 +38,23 @@ class Home extends Component {
             });
     }
 
-    // fetches all users data
-    getAllData() {
-        fetch(`${ENDPOINT}/home/alldata`, {
-            method: "GET",
-            headers: {
-                'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    allData: data,
-                    isDataFetched: true
-                });
-            });
-    }
+    // // fetches all users data
+    // getAllData() {
+    //     fetch(`${ENDPOINT}/home/alldata`, {
+    //         method: "GET",
+    //         headers: {
+    //             'content-type': 'application/json',
+    //             authorization: `Bearer ${localStorage.token}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.setState({
+    //                 allData: data,
+    //                 isDataFetched: true
+    //             });
+    //         });
+    // }
 
     // inform server through socket
     handleSocket() {
@@ -65,6 +64,13 @@ class Home extends Component {
 
         socket.on("message", data => {
             console.log(data);
+        });
+
+        socket.on("allUsers", data => {
+            this.setState({
+                allData: data,
+                isDataFetched: true
+            });
         });
     }
 
