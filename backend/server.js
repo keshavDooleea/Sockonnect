@@ -26,6 +26,9 @@ app.use('/home', require("./routes/home"));
 // run when client connects 
 io.on("connection", socket => {
     console.log("new websocket connection");
+
+    // send msg to client
+    socket.emit('message', 'Welcome to chatcord');
 });
 
 server.listen(PORT, () => console.log(`listening on port ${PORT}`));

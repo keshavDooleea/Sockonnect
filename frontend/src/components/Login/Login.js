@@ -5,7 +5,6 @@ import hidePassword from "../../assets/hide_pass.png";
 import loading from "../../assets/loading.gif";
 import errorCross from "../../assets/error.png";
 import check from "../../assets/check.png";
-import socketIOClient from "socket.io-client";
 import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
@@ -104,13 +103,6 @@ class Login extends Component {
                 } else if (data.status === "OK") {
                     alertUser("Login successful", true);
                     localStorage.setItem("token", data.token);
-
-                    // inform server through socket
-                    const socket = socketIOClient(this.state.endpoint);
-                    socket.on("FromAPI", data => {
-                        console.log("CLIENT SIDE");
-                    });
-
 
                     setTimeout(() => {
                         this.props.history.push("/home");

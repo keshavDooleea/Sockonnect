@@ -1,29 +1,34 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import addImg from "../../assets/add.png";
+import socketIOClient from "socket.io-client";
 import "./Home.css";
+const ENDPOINT = "http://localhost:5000";
+const socket = socketIOClient(ENDPOINT);
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            url: "http://localhost:5000",
             myData: [],
             allData: [],
             isDataFetched: false,
             isHamburgerOpen: false,
         };
+
     }
 
     componentDidMount() {
         // this.getMyData();
         this.getAllData();
+        this.initiateSocket();
+
     }
 
     // fetches only the data of my proile
     getMyData() {
-        fetch(`${this.state.url}/home/mydata`, {
+        fetch(`${ENDPOINT}/home/mydata`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json',
@@ -38,7 +43,7 @@ class Home extends Component {
 
     // fetches all users data
     getAllData() {
-        fetch(`${this.state.url}/home/alldata`, {
+        fetch(`${ENDPOINT}/home/alldata`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json',
@@ -54,11 +59,18 @@ class Home extends Component {
             });
     }
 
+    // inform server through socket
+    initiateSocket() {
+        socket.on("message", data => {
+            console.log(data);
+        });
+    }
+
     sendFriendRequest(e) {
         const username = e.target.parentElement.parentElement.parentElement.querySelector(".people_name_div h1").textContent;
         const data = { username };
 
-        fetch(`http://localhost:5000/home/request`, {
+        fetch(`${this.state.endpoint}/home/request`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
