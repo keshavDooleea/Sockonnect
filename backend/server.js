@@ -3,7 +3,9 @@ const http = require("http"); // for socket io
 const express = require("express");
 const cors = require("cors");
 const mongo = require("mongoose");
+const jwt = require("jsonwebtoken");
 const socketio = require("socket.io");
+const User = require("./modals/User").User;
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -21,14 +23,70 @@ mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUr
 // middlewares
 app.use('/login', require("./routes/login"));
 app.use('/register', require("./routes/register"));
-app.use('/home', require("./routes/home"));
 
 // run when client connects 
 io.on("connection", socket => {
     console.log("new websocket connection");
 
-    // send msg to client
+    // send msg to single connected client
     socket.emit('message', 'Welcome to chatcord');
+
+    // broadcast: emit to everybody except the user connected
+
+    // io.emit : to everybody
 });
+
+// HOME routes
+app.get("/home/mydata", (req, res) => {
+    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
+    // console.log(decodedUser);
+});
+
+app.get("/home/alldata", (req, res) => {
+    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
+    let username, fullname;
+    let people = {
+        username,
+        fullname
+    };
+    let array = [];
+
+    // send back everybodys username and fullname
+    User.find({}, (err, user) => {
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].username != decodedUser.username) {
+                people.username = user[i].username;
+                people.fullname = user[i].fullname;
+                array.push(people);
+                people = {};
+            }
+        }
+        res.json(array);
+    });
+});
+
+app.post("/home/request", (req, res) => {
+    let decodedUser = jwt.verify(req.headers['authorization'].split(' ')[1], process.env.JWT_TOKEN);
+
+    // finding friend
+    User.find({ username: req.body.username }, (err, user) => {
+        if (err) res.json(err);
+
+        // find myself
+        User.findById(decodedUser._id, (err, me) => {
+            if (err) res.json(err);
+
+            const friend = {
+                username: me.username,
+                fullname: me.fullname
+            };
+
+            // user.friend_request.push(friend);
+            console.log(user.friend_request);
+            res.json("friend added");
+        });
+    });
+});
+
 
 server.listen(PORT, () => console.log(`listening on port ${PORT}`));
