@@ -24,6 +24,7 @@
   -ms-grid-columns: 20% 50% 30%;
       grid-template-columns: 20% 50% 30%;
       grid-template-areas: "friends chat add";
+  overflow: hidden;
 }
 
 .home_body .friends_div {

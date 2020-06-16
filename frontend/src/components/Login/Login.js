@@ -5,11 +5,14 @@ import hidePassword from "../../assets/hide_pass.png";
 import loading from "../../assets/loading.gif";
 import errorCross from "../../assets/error.png";
 import check from "../../assets/check.png";
+import socketIOClient from "socket.io-client";
 import "./Login.css";
 
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // https://www.pinterest.ca/pin/590534569872873352/visual-search/?x=16&y=12&w=530&h=397
-// 1280 x 610 
+// https://medium.com/@noufel.gouirhate/build-a-simple-chat-app-with-node-js-and-socket-io-ea716c093088
+// https://www.valentinog.com/blog/socket-react/
+// laptop size: 1280 x 610 
 
 // msg shown to user
 function alertUser(text, isSuccess) {
@@ -50,7 +53,7 @@ class Login extends Component {
 
         this.state = {
             isShowEye: false,
-            url: "http://localhost:5000"
+            endpoint: "http://localhost:5000"
         };
 
         this.alternatePassword = this.alternatePassword.bind(this);
@@ -79,7 +82,7 @@ class Login extends Component {
         document.querySelector(".sign_in img").style.display = "block";
 
 
-        fetch(`${this.state.url}/login`, {
+        fetch(`${this.state.endpoint}/login`, {
             method: "POST",
             body: JSON.stringify(user),
             headers: {
@@ -101,6 +104,13 @@ class Login extends Component {
                 } else if (data.status === "OK") {
                     alertUser("Login successful", true);
                     localStorage.setItem("token", data.token);
+
+                    // inform server through socket
+                    const socket = socketIOClient(this.state.endpoint);
+                    socket.on("FromAPI", data => {
+                        console.log("CLIENT SIDE");
+                    });
+
 
                     setTimeout(() => {
                         this.props.history.push("/home");

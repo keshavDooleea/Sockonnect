@@ -30,6 +30,12 @@ const UserSchema = new mongo.Schema({
             },
         },
     ],
+    friend_request: [
+        {
+            username: { type: String },
+            fullname: { type: String },
+        },
+    ],
 });
 
 var User = mongo.model("User", UserSchema);

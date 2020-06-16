@@ -54,6 +54,24 @@ class Home extends Component {
             });
     }
 
+    sendFriendRequest(e) {
+        const username = e.target.parentElement.parentElement.parentElement.querySelector(".people_name_div h1").textContent;
+        const data = { username };
+
+        fetch(`http://localhost:5000/home/request`, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
     // displays the name of all users
     showPeople() {
         let data = this.state.allData;
@@ -67,7 +85,7 @@ class Home extends Component {
                     </div>
                     <div className="people_add_div">
                         <span>
-                            <img src={addImg} alt="addFriend" />
+                            <img src={addImg} alt="addFriend" onClick={(e) => this.sendFriendRequest(e)} />
                         </span>
                     </div>
                 </div>
