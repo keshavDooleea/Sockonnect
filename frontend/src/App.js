@@ -12,7 +12,7 @@ class App extends Component {
         <Route exact strict path={["/", "/login"]} component={Login}></Route>
         <Route exact strict path="/register" component={Register} ></Route>
 
-        <Route exact path="/home" render={() => (
+        <Route exact path="/home/:username" render={() => (
           localStorage.token ? <Home /> : <Redirect to="/" />
         )}></Route>
 

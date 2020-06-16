@@ -5,6 +5,7 @@ const cors = require("cors");
 const mongo = require("mongoose");
 const jwt = require("jsonwebtoken");
 const socketio = require("socket.io");
+const { use } = require("./routes/login");
 const User = require("./modals/User").User;
 
 const PORT = process.env.PORT || 5000;
@@ -24,16 +25,35 @@ mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUr
 app.use('/login', require("./routes/login"));
 app.use('/register', require("./routes/register"));
 
-// run when client connects 
-io.on("connection", socket => {
-    console.log("new websocket connection");
+/* run when client connects 
+   3 ways to communicate: socket.emit, broadcast.emit, io.emit
 
-    // send msg to single connected client
+    emit: send msg to single/current connected client
+    broadcast: emit to everybody except the user connected
+    io.emit : to everybody
+*/
+io.on("connection", socket => {
+    let username;
+
+    // send msg to single/current connected client
     socket.emit('message', 'Welcome to chatcord');
 
-    // broadcast: emit to everybody except the user connected
+    // when user connects => show active button
+    // socket.broadcast.emit('message', 'user connected');
 
-    // io.emit : to everybody
+    // someone just signed in in client side
+    socket.on("newUserConnected", data => {
+        let decodedUser = jwt.verify(data.token, process.env.JWT_TOKEN);
+        username = decodedUser.username;
+        console.log(username);
+
+        socket.broadcast.emit('message', `${username} is now connected`);
+
+        // when user disconnects => removes active button
+        socket.on("disconnect", () => {
+            io.emit('message', `${username} is offline`);
+        });
+    });
 });
 
 // HOME routes

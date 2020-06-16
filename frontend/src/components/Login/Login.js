@@ -7,6 +7,10 @@ import errorCross from "../../assets/error.png";
 import check from "../../assets/check.png";
 import "./Login.css";
 
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://localhost:5000";
+const socket = socketIOClient(`${ENDPOINT}`);
+
 // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
 // https://www.pinterest.ca/pin/590534569872873352/visual-search/?x=16&y=12&w=530&h=397
 // https://medium.com/@noufel.gouirhate/build-a-simple-chat-app-with-node-js-and-socket-io-ea716c093088
@@ -104,12 +108,17 @@ class Login extends Component {
                     alertUser("Login successful", true);
                     localStorage.setItem("token", data.token);
 
+                    // send msg to server
+                    socket.emit("newUserConnected", {
+                        token: data.token,
+                        message: "new user connected"
+                    });
+
                     setTimeout(() => {
-                        this.props.history.push("/home");
+                        this.props.history.push(`/home/${username}`);
                     }, 2500);
                 }
-            })
-
+            });
     }
 
     alternatePassword() {

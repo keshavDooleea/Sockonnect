@@ -4,7 +4,7 @@ import addImg from "../../assets/add.png";
 import socketIOClient from "socket.io-client";
 import "./Home.css";
 const ENDPOINT = "http://localhost:5000";
-const socket = socketIOClient(ENDPOINT);
+const socket = socketIOClient(`${ENDPOINT}`);
 
 class Home extends Component {
     constructor(props) {
@@ -16,14 +16,12 @@ class Home extends Component {
             isDataFetched: false,
             isHamburgerOpen: false,
         };
-
     }
 
     componentDidMount() {
         // this.getMyData();
         this.getAllData();
-        this.initiateSocket();
-
+        this.handleSocket();
     }
 
     // fetches only the data of my proile
@@ -60,7 +58,11 @@ class Home extends Component {
     }
 
     // inform server through socket
-    initiateSocket() {
+    handleSocket() {
+        socket.emit("newUserConnected", {
+            token: localStorage.getItem("token") // to retrieve user
+        });
+
         socket.on("message", data => {
             console.log(data);
         });
