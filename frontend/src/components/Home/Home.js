@@ -67,7 +67,13 @@ class Home extends Component {
             console.log(data);
         });
 
+        const username = this.props.match.params.username;
         socket.on("allUsers", data => {
+            let index = data.findIndex((user) => {
+                return user.username === username
+            });
+            data.splice(index, 1);
+
             this.setState({
                 allData: data,
                 isDataFetched: true

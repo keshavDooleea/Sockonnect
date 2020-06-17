@@ -86,27 +86,15 @@ async function refreshUsers(user, socket) {
             return;
         }
 
-        await User.findOne({ username: user.username }, async (err, currentUser) => {
+        for (let i = 0; i < users.length; i++) {
+            people.username = users[i].username;
+            people.fullname = users[i].fullname;
+            people.id = users[i]._id;
+            array.push(people);
+            people = {};
+        }
 
-            await User.find({}, async (err, allUsers) => {
-                console.log("HERE: " + currentUser);
-
-                for (let i = 0; i < allUsers.length; i++) {
-                    if (allUsers[i].socket_id != currentUser.socket_id) {
-
-                        people.username = allUsers[i].username;
-                        people.fullname = allUsers[i].fullname;
-                        people.id = allUsers[i]._id;
-                        array.push(people);
-                        people = {};
-                    }
-                }
-
-                socket.emit("allUsers", array); // send to everyone
-            })
-        })
-
-
+        io.emit("allUsers", array); // send to everyone
     });
 }
 
