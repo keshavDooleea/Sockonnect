@@ -7,6 +7,8 @@ const jwt = require("jsonwebtoken");
 const socketio = require("socket.io");
 const { use } = require("./routes/login");
 const User = require("./modals/User").User;
+const { joinUser, getCurrentUser } = require("./utils/loggedUsers");
+const { join } = require("path");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -17,7 +19,12 @@ app.use(cors());
 app.use(express.json());
 // kill node.exe pid : cmd "/C TASKKILL /IM node.exe /F"
 
-mongo.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }, () => {
+mongo.connect(process.env.MONGO_CONNECTION, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+}, () => {
     console.log("connected to DB!");
 });
 
@@ -40,23 +47,30 @@ io.on("connection", socket => {
 
     // someone just signed in in client side
     socket.on("newUserConnected", data => {
-        // let decodedUser = jwt.verify(data.token, process.env.JWT_TOKEN);
-        username = data.username;
-        console.log("UYOO: " + username);
+        const user = {
+            id: socket.id,
+            username: data.username
+        };
+        socket.join(user);
 
-        socket.broadcast.emit('message', `${username} is now connected`);
+        socket.broadcast.emit('message', `${user.username} is now connected`);
 
         // refresh all existing users
-        // refreshUsers(io, username);
+        saveUserSocketId(user);
+        refreshUsers(user, socket);
 
         // when user disconnects => removes active button
         socket.on("disconnect", () => {
-            io.emit('message', `${username} is offline`);
+            io.emit('message', `${user.username} is offline`);
         });
     });
 });
 
-function refreshUsers(io, currentUsername) {
+async function saveUserSocketId(user) {
+    await User.findOneAndUpdate({ username: user.username }, { socket_id: user.id });
+}
+
+async function refreshUsers(user, socket) {
     let array = [];
     let username, fullname, id;
     let people = {
@@ -66,18 +80,33 @@ function refreshUsers(io, currentUsername) {
     };
 
     // send back everybodys username and fullname
-    User.find({}, (err, users) => {
-        if (err) console.log(err);
-
-        for (let i = 0; i < users.length; i++) {
-            people.username = users[i].username;
-            people.fullname = users[i].fullname;
-            people.id = users[i]._id;
-            array.push(people);
-            people = {};
+    await User.find({}, async (err, users) => {
+        if (err) {
+            console.log(err);
+            return;
         }
 
-        io.emit("allUsers", array); // send to everyone
+        await User.findOne({ username: user.username }, async (err, currentUser) => {
+
+            await User.find({}, async (err, allUsers) => {
+                console.log("HERE: " + currentUser);
+
+                for (let i = 0; i < allUsers.length; i++) {
+                    if (allUsers[i].socket_id != currentUser.socket_id) {
+
+                        people.username = allUsers[i].username;
+                        people.fullname = allUsers[i].fullname;
+                        people.id = allUsers[i]._id;
+                        array.push(people);
+                        people = {};
+                    }
+                }
+
+                socket.emit("allUsers", array); // send to everyone
+            })
+        })
+
+
     });
 }
 

@@ -68,11 +68,10 @@ class Home extends Component {
         });
 
         socket.on("allUsers", data => {
-
-            // this.setState({
-            //     allData: data,
-            //     isDataFetched: true
-            // });
+            this.setState({
+                allData: data,
+                isDataFetched: true
+            });
         });
     }
 

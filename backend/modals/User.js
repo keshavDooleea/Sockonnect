@@ -21,6 +21,9 @@ const UserSchema = new mongo.Schema({
         type: Date,
         default: Date.now,
     },
+    socket_id: {
+        type: String
+    },
     friends: [
         {
             username: { type: String },
