@@ -410,9 +410,10 @@
           justify-content: flex-end;
 }
 
-.home_body .addFriends_div .usersList > div .people_list_item .people_add_div span {
+.home_body .addFriends_div .usersList > div .people_list_item .people_add_div button {
   width: 35px;
   height: 35px;
+  font-size: 40px;
   display: -ms-grid;
   display: grid;
   place-content: center;
@@ -422,20 +423,17 @@
   border-radius: 8px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  border: none;
+  outline: none;
 }
 
-.home_body .addFriends_div .usersList > div .people_list_item .people_add_div span:hover {
+.home_body .addFriends_div .usersList > div .people_list_item .people_add_div button:hover {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.home_body .addFriends_div .usersList > div .people_list_item .people_add_div span:active {
+.home_body .addFriends_div .usersList > div .people_list_item .people_add_div button:active {
   -webkit-box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
           box-shadow: inset 6px 6px 13px #21a48e,  inset -6px -6px 13px #2ddec0;
-}
-
-.home_body .addFriends_div .usersList > div .people_list_item .people_add_div span img {
-  width: 22px;
-  height: 22px;
 }
 /*# sourceMappingURL=Home.css.map */

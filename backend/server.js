@@ -64,6 +64,10 @@ io.on("connection", socket => {
             io.emit('message', `${user.username} is offline`);
         });
     });
+
+    socket.on("newFriendRequest", data => {
+        console.log(data);
+    })
 });
 
 async function saveUserSocketId(user) {

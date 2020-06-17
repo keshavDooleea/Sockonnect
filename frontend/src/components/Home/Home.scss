@@ -295,16 +295,19 @@ $greenish: #27c1a7;
                       align-items: center;
                       justify-content: flex-end;
 
-                      span {
+                      button {
                           width: 35px;
                           height: 35px;
+                          font-size: 40px;
                           display: grid;
                           place-content: center;
                           color: white;
                           cursor: pointer;
                           background-color: $greenish;
                           border-radius: 8px;
-                          transition: 0.5s;   
+                          transition: 0.5s;        
+                          border: none;
+                          outline: none;                    
                           
                           &:hover {
                             transform: rotate(45deg);
@@ -312,11 +315,6 @@ $greenish: #27c1a7;
 
                           &:active {
                             @include activeButtonsShadow();
-                          }
-
-                          img {
-                            width: 22px;
-                            height: 22px;   
                           }
                       }
                   }

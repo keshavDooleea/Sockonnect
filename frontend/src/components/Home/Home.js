@@ -46,21 +46,12 @@ class Home extends Component {
     }
 
     sendFriendRequest(e) {
-        const username = e.target.parentElement.parentElement.parentElement.querySelector(".people_name_div h1").textContent;
-        const data = { username };
+        const data = {
+            from: this.props.location.state.username,
+            to: e.target.parentElement.parentElement.querySelector(".people_name_div h1").textContent
+        };
 
-        fetch(`${this.state.endpoint}/home/request`, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+        socket.emit("newFriendRequest", data);
     }
 
     // displays the name of all users
@@ -75,9 +66,7 @@ class Home extends Component {
                         <h4 key={item.fullname}>{item.fullname}</h4>
                     </div>
                     <div className="people_add_div">
-                        <span>
-                            <img src={addImg} alt="addFriend" onClick={(e) => this.sendFriendRequest(e)} />
-                        </span>
+                        <button onClick={(e) => this.sendFriendRequest(e)}>+</button>
                     </div>
                 </div>
             ))}
