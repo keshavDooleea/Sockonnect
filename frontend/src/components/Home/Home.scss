@@ -65,7 +65,7 @@ $greenish: #27c1a7;
                 transform: rotate(0deg);
             }
 
-            div {
+            & > div {
                 width: 30px;
                 height: 40px;
                 margin-left: 20px;
@@ -74,7 +74,8 @@ $greenish: #27c1a7;
                 justify-content: space-evenly;
                 cursor: pointer;
                 opacity: 0.7;
-                transition: 0.4s;
+                transition: 0.4s; 
+                position: relative;
 
                 span {
                     width: 100%;
@@ -86,6 +87,23 @@ $greenish: #27c1a7;
 
                 span:nth-child(2) {
                     background-color: $greenish;
+                }
+
+                .request_number_div {
+                    width: 25px;
+                    height: 25px;
+                    position: absolute;
+                    background-color: $redish;
+                    border-radius: 50%;
+                    bottom: 0;
+                    left: 110%;
+                    text-align: center;
+                    
+                    p {
+                        box-sizing: border-box;
+                        padding: 0 3px 3px 0;
+                        color: white;
+                    }
                 }
 
                 &:hover {

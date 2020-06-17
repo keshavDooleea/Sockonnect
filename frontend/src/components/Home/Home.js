@@ -32,9 +32,16 @@ class Home extends Component {
         });
 
         socket.on("allUsers", data => {
+            // get current users position
             let index = data.findIndex((user) => {
                 return user.username === this.props.location.state.username
             });
+            console.log("EE");
+
+            // show number of requests
+            document.querySelector(".request_number_div p").textContent = data[index].requests_received.length;
+
+            // remove actual user
             data.splice(index, 1);
 
             this.setState({
@@ -50,9 +57,7 @@ class Home extends Component {
             to: e.target.parentElement.parentElement.querySelector(".people_name_div h1").textContent
         };
 
-        // 
-
-        // socket.emit("newFriendRequest", data);
+        socket.emit("newFriendRequest", data);
     }
 
     // displays the name of all users
@@ -61,7 +66,7 @@ class Home extends Component {
 
         return <div>
             {data.map(item => (
-                <div key={item.id} className="people_list_item">
+                <div key={item._id} className="people_list_item">
                     <div key={item.username} className="people_name_div">
                         <h1 key={item.username}>{item.username}</h1>
                         <h4 key={item.fullname}>{item.fullname}</h4>
@@ -124,6 +129,10 @@ class Home extends Component {
                             <span></span>
                             <span></span>
                             <span></span>
+                            <div className="request_number_div">
+                                {/* {this.state.isDataFetched ? <p>{this.state.allData[0].requests_received.length}</p> : null} */}
+                                <p></p>
+                            </div>
                         </div>
                     </div>
                     <div className="userDiv">

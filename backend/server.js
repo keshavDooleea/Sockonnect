@@ -57,7 +57,7 @@ io.on("connection", socket => {
 
         // refresh all existing users
         saveUserSocketId(user);
-        refreshUsers(user, socket);
+        refreshUsers();
 
         // when user disconnects => removes active button
         socket.on("disconnect", () => {
@@ -65,22 +65,22 @@ io.on("connection", socket => {
         });
     });
 
-    socket.on("newFriendRequest", data => {
+    socket.on("newFriendRequest", async data => {
         console.log(data);
 
         // from sender
-        User.findOne({ username: data.from }, (err, user) => {
+        await User.findOne({ username: data.from }, (err, user) => {
             user.requests_sent.push({ username: data.to });
             user.save();
-            console.log(user);
         });
 
         // to wannabe friend
-        User.findOne({ username: data.to }, (err, user) => {
+        await User.findOne({ username: data.to }, (err, user) => {
             user.requests_received.push({ username: data.from });
             user.save();
-            console.log(user);
         });
+
+        refreshUsers();
     })
 });
 
@@ -88,14 +88,8 @@ async function saveUserSocketId(user) {
     await User.findOneAndUpdate({ username: user.username }, { socket_id: user.id });
 }
 
-async function refreshUsers(user, socket) {
+async function refreshUsers() {
     let array = [];
-    let username, fullname, id;
-    let people = {
-        username,
-        fullname,
-        id
-    };
 
     // send back everybodys username and fullname
     await User.find({}, async (err, users) => {
@@ -105,11 +99,7 @@ async function refreshUsers(user, socket) {
         }
 
         for (let i = 0; i < users.length; i++) {
-            people.username = users[i].username;
-            people.fullname = users[i].fullname;
-            people.id = users[i]._id;
-            array.push(people);
-            people = {};
+            array.push(users[i]);
         }
 
         io.emit("allUsers", array); // send to everyone
