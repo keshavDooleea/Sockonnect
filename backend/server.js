@@ -57,7 +57,7 @@ io.on("connection", socket => {
 
         // refresh all existing users
         saveUserSocketId(user);
-        refreshUsers();
+        getRemainingUsers(user.username, socket);
 
         // when user disconnects => removes active button
         socket.on("disconnect", () => {
@@ -80,7 +80,7 @@ io.on("connection", socket => {
             user.save();
         });
 
-        refreshUsers();
+        getRemainingUsers(data.from, socket);
     })
 });
 
@@ -88,22 +88,30 @@ async function saveUserSocketId(user) {
     await User.findOneAndUpdate({ username: user.username }, { socket_id: user.id });
 }
 
-async function refreshUsers() {
-    let array = [];
-
-    // send back everybodys username and fullname
+async function getRemainingUsers(username, socket) {
+    // all users
     await User.find({}, async (err, users) => {
-        if (err) {
-            console.log(err);
-            return;
-        }
 
+        let allUsers = [];
         for (let i = 0; i < users.length; i++) {
-            array.push(users[i]);
+            allUsers.push(users[i].username);
         }
 
-        io.emit("allUsers", array); // send to everyone
+        // current user
+        await User.findOne({ username: username }, (err, me) => {
+            let addedFriends = [];
+            for (let i = 0; i < me.requests_sent.length; i++) {
+                addedFriends.push(me.requests_sent[i].username);
+            }
+
+            const availableUsers = allUsers.filter(function (x) {
+                return addedFriends.indexOf(x) < 0;
+            });
+
+            socket.emit("allUsers", availableUsers); // send to everyone
+        });
     });
+
 }
 
 // HOME routes

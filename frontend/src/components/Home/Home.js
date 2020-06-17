@@ -34,12 +34,11 @@ class Home extends Component {
         socket.on("allUsers", data => {
             // get current users position
             let index = data.findIndex((user) => {
-                return user.username === this.props.location.state.username
+                return user === this.props.location.state.username
             });
-            console.log("EE");
 
             // show number of requests
-            document.querySelector(".request_number_div p").textContent = data[index].requests_received.length;
+            // document.querySelector(".request_number_div p").textContent = data[index].requests_received.length;
 
             // remove actual user
             data.splice(index, 1);
@@ -68,7 +67,7 @@ class Home extends Component {
             {data.map(item => (
                 <div key={item._id} className="people_list_item">
                     <div key={item.username} className="people_name_div">
-                        <h1 key={item.username}>{item.username}</h1>
+                        <h1 key={item}>{item}</h1>
                         <h4 key={item.fullname}>{item.fullname}</h4>
                     </div>
                     <div className="people_add_div">
