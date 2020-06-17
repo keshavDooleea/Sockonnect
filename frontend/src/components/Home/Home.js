@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import addImg from "../../assets/add.png";
 import socketIOClient from "socket.io-client";
 import "./Home.css";
 const ENDPOINT = "http://localhost:5000";
@@ -51,7 +50,9 @@ class Home extends Component {
             to: e.target.parentElement.parentElement.querySelector(".people_name_div h1").textContent
         };
 
-        socket.emit("newFriendRequest", data);
+        // 
+
+        // socket.emit("newFriendRequest", data);
     }
 
     // displays the name of all users

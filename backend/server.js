@@ -67,6 +67,20 @@ io.on("connection", socket => {
 
     socket.on("newFriendRequest", data => {
         console.log(data);
+
+        // from sender
+        User.findOne({ username: data.from }, (err, user) => {
+            user.requests_sent.push({ username: data.to });
+            user.save();
+            console.log(user);
+        });
+
+        // to wannabe friend
+        User.findOne({ username: data.to }, (err, user) => {
+            user.requests_received.push({ username: data.from });
+            user.save();
+            console.log(user);
+        });
     })
 });
 

@@ -33,10 +33,14 @@ const UserSchema = new mongo.Schema({
             },
         },
     ],
-    friend_request: [
+    requests_sent: [
         {
             username: { type: String },
-            fullname: { type: String },
+        },
+    ],
+    requests_received: [
+        {
+            username: { type: String },
         },
     ],
 });
