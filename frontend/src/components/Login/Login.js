@@ -114,7 +114,7 @@ class Login extends Component {
                     });
 
                     setTimeout(() => {
-                        this.props.history.push(`/home/${username}`);
+                        this.props.history.push(`/home`, { username: username });
                     }, 2500);
                 }
             });

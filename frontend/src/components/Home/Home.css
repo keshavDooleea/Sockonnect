@@ -113,15 +113,31 @@
   width: 25px;
 }
 
-.home_body .friends_div > h1 {
+.home_body .friends_div .userDiv {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: friendsTitle;
-  display: -ms-grid;
-  display: grid;
-  place-content: center;
-  font-size: 40px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home_body .friends_div .userDiv h1 {
+  font-size: 35px;
   letter-spacing: 2px;
+  color: #27c1a7;
+}
+
+.home_body .friends_div .userDiv h3 {
+  font-size: 40px;
   color: #45474c;
 }
 

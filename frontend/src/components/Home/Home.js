@@ -25,18 +25,16 @@ class Home extends Component {
     // inform server through socket
     handleSocket() {
         socket.emit("newUserConnected", {
-            token: localStorage.getItem(`${this.props.match.params.username}token`), // to retrieve user
-            username: this.props.match.params.username
+            username: this.props.location.state.username
         });
 
         socket.on("message", data => {
             console.log(data);
         });
 
-        const username = this.props.match.params.username;
         socket.on("allUsers", data => {
             let index = data.findIndex((user) => {
-                return user.username === username
+                return user.username === this.props.location.state.username
             });
             data.splice(index, 1);
 
@@ -138,7 +136,10 @@ class Home extends Component {
                             <span></span>
                         </div>
                     </div>
-                    <h1>FRIENDS</h1>
+                    <div className="userDiv">
+                        <h1>{this.props.location.state.username}'s </h1>
+                        <h3>FRIENDS</h3>
+                    </div>
                     <div className="friendList">
                     </div>
 
