@@ -38,19 +38,16 @@ io.on("connection", socket => {
     // send msg to single/current connected client
     socket.emit('message', 'Welcome to chatcord');
 
-    // when user connects => show active button
-    // socket.broadcast.emit('message', 'user connected');
-
     // someone just signed in in client side
     socket.on("newUserConnected", data => {
-        let decodedUser = jwt.verify(data.token, process.env.JWT_TOKEN);
-        username = decodedUser.username;
+        // let decodedUser = jwt.verify(data.token, process.env.JWT_TOKEN);
+        username = data.username;
+        console.log("UYOO: " + username);
 
         socket.broadcast.emit('message', `${username} is now connected`);
 
         // refresh all existing users
-        refreshUsers(socket, username);
-
+        // refreshUsers(io, username);
 
         // when user disconnects => removes active button
         socket.on("disconnect", () => {
@@ -59,26 +56,28 @@ io.on("connection", socket => {
     });
 });
 
-function refreshUsers(socket, currentUsername) {
-    let username, fullname;
+function refreshUsers(io, currentUsername) {
+    let array = [];
+    let username, fullname, id;
     let people = {
         username,
-        fullname
+        fullname,
+        id
     };
-    let array = [];
 
     // send back everybodys username and fullname
-    User.find({}, (err, user) => {
-        for (let i = 0; i < user.length; i++) {
-            if (user[i].username != currentUsername) {
-                people.username = user[i].username;
-                people.fullname = user[i].fullname;
-                array.push(people);
-                people = {};
-            }
+    User.find({}, (err, users) => {
+        if (err) console.log(err);
+
+        for (let i = 0; i < users.length; i++) {
+            people.username = users[i].username;
+            people.fullname = users[i].fullname;
+            people.id = users[i]._id;
+            array.push(people);
+            people = {};
         }
-        // res.json(array);
-        socket.emit("allUsers", array);
+
+        io.emit("allUsers", array); // send to everyone
     });
 }
 

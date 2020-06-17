@@ -35,7 +35,8 @@ router.route("/").post(async (req, res) => {
                     let token = jwt.sign(loggedUser, process.env.JWT_TOKEN, {});
                     res.json({
                         status: "OK",
-                        token: token
+                        token: token,
+                        username: loggedUser.username
                     });
                 }
             });

@@ -59,7 +59,8 @@ class Home extends Component {
     // inform server through socket
     handleSocket() {
         socket.emit("newUserConnected", {
-            token: localStorage.getItem("token") // to retrieve user
+            token: localStorage.getItem(`${this.props.match.params.username}token`), // to retrieve user
+            username: this.props.match.params.username
         });
 
         socket.on("message", data => {
@@ -67,10 +68,11 @@ class Home extends Component {
         });
 
         socket.on("allUsers", data => {
-            this.setState({
-                allData: data,
-                isDataFetched: true
-            });
+
+            // this.setState({
+            //     allData: data,
+            //     isDataFetched: true
+            // });
         });
     }
 
@@ -98,7 +100,7 @@ class Home extends Component {
 
         return <div>
             {data.map(item => (
-                <div key={item.username} className="people_list_item">
+                <div key={item.id} className="people_list_item">
                     <div key={item.username} className="people_name_div">
                         <h1 key={item.username}>{item.username}</h1>
                         <h4 key={item.fullname}>{item.fullname}</h4>

@@ -98,19 +98,18 @@ class Login extends Component {
                 document.querySelector(".sign_in button").style.display = "block";
                 document.querySelector(".sign_in img").style.display = "none";
 
-                console.log(data);
-
                 if (data === "USERNAME") {
                     alertUser("Username incorrect", false);
                 } else if (data === "PASSWORD") {
                     alertUser("Password incorrect", false);
                 } else if (data.status === "OK") {
                     alertUser("Login successful", true);
-                    localStorage.setItem("token", data.token);
+                    localStorage.setItem(`${data.username}token`, data.token);
 
                     // send msg to server
                     socket.emit("newUserConnected", {
                         token: data.token,
+                        username: data.username,
                         message: "new user connected"
                     });
 
