@@ -19,42 +19,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        // this.getMyData();
         this.handleSocket();
     }
-
-    // fetches only the data of my proile
-    getMyData() {
-        fetch(`${ENDPOINT}/home/mydata`, {
-            method: "GET",
-            headers: {
-                'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            });
-    }
-
-    // // fetches all users data
-    // getAllData() {
-    //     fetch(`${ENDPOINT}/home/alldata`, {
-    //         method: "GET",
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             authorization: `Bearer ${localStorage.token}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 allData: data,
-    //                 isDataFetched: true
-    //             });
-    //         });
-    // }
 
     // inform server through socket
     handleSocket() {

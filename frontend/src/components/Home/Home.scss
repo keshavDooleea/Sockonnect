@@ -30,6 +30,10 @@ $greenish: #27c1a7;
     font-size: 21px;
 }
 
+::-webkit-scrollbar {
+    width: 0px; 
+}
+
 .home_body {
     width: 100vw;
     height: 100vh;
@@ -262,6 +266,7 @@ $greenish: #27c1a7;
                       display: flex;
                       flex-direction: column;
                       justify-content: space-evenly;
+                      user-select: initial;
 
                       h1 {
                           color: $greenish;

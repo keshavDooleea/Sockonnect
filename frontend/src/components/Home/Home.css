@@ -14,6 +14,10 @@
   font-size: 21px;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 .home_body {
   width: 100vw;
   height: 100vh;
@@ -361,6 +365,10 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  -webkit-user-select: initial;
+     -moz-user-select: initial;
+      -ms-user-select: initial;
+          user-select: initial;
 }
 
 .home_body .addFriends_div .usersList > div .people_list_item .people_name_div h1 {
